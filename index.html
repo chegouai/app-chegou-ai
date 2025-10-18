@@ -1,0 +1,3182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chegou Aí - Notificações Automáticas para Entregas</title>
+    <meta name="description" content="O Chegou Aí conecta entregadores e moradores através de notificações automáticas via WhatsApp. Receba avisos instantâneos quando sua entrega chegar ao condomínio.">
+    <meta name="keywords" content="entrega, condomínio, notificação, WhatsApp, motoboy, morador, chegou aí">
+    <meta name="author" content="Chegou Aí Tecnologia LTDA">
+    <meta property="og:title" content="Chegou Aí - Notificações Automáticas para Entregas">
+    <meta property="og:description" content="Receba notificações automáticas no WhatsApp quando sua entrega chegar ao condomínio.">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://chegouai.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Design System */
+        :root {
+          /* Primitive Color Tokens */
+          --color-white: rgba(255, 255, 255, 1);
+          --color-black: rgba(0, 0, 0, 1);
+          --color-cream-50: rgba(252, 252, 249, 1);
+          --color-cream-100: rgba(255, 255, 253, 1);
+          --color-gray-200: rgba(245, 245, 245, 1);
+          --color-gray-300: rgba(167, 169, 169, 1);
+          --color-gray-400: rgba(119, 124, 124, 1);
+          --color-slate-500: rgba(98, 108, 113, 1);
+          --color-brown-600: rgba(94, 82, 64, 1);
+          --color-charcoal-700: rgba(31, 33, 33, 1);
+          --color-charcoal-800: rgba(38, 40, 40, 1);
+          --color-slate-900: rgba(19, 52, 59, 1);
+          --color-teal-300: rgba(50, 184, 198, 1);
+          --color-teal-400: rgba(45, 166, 178, 1);
+          --color-teal-500: rgba(33, 128, 141, 1);
+          --color-teal-600: rgba(29, 116, 128, 1);
+          --color-teal-700: rgba(26, 104, 115, 1);
+          --color-teal-800: rgba(41, 150, 161, 1);
+          --color-red-400: rgba(255, 84, 89, 1);
+          --color-red-500: rgba(192, 21, 47, 1);
+          --color-orange-400: rgba(230, 129, 97, 1);
+          --color-orange-500: rgba(168, 75, 47, 1);
+
+          /* RGB versions for opacity control */
+          --color-brown-600-rgb: 94, 82, 64;
+          --color-teal-500-rgb: 33, 128, 141;
+          --color-slate-900-rgb: 19, 52, 59;
+          --color-slate-500-rgb: 98, 108, 113;
+          --color-red-500-rgb: 192, 21, 47;
+          --color-red-400-rgb: 255, 84, 89;
+          --color-orange-500-rgb: 168, 75, 47;
+          --color-orange-400-rgb: 230, 129, 97;
+
+          /* Background color tokens (Light Mode) */
+          --color-bg-1: rgba(59, 130, 246, 0.08);
+          --color-bg-2: rgba(245, 158, 11, 0.08);
+          --color-bg-3: rgba(34, 197, 94, 0.08);
+          --color-bg-4: rgba(239, 68, 68, 0.08);
+          --color-bg-5: rgba(147, 51, 234, 0.08);
+          --color-bg-6: rgba(249, 115, 22, 0.08);
+          --color-bg-7: rgba(236, 72, 153, 0.08);
+          --color-bg-8: rgba(6, 182, 212, 0.08);
+
+          /* Custom Chegou Aí Colors */
+          --color-orange-primary: #FF6B35;
+          --color-orange-hover: #E55A2B;
+          --color-orange-active: #CC4E21;
+          --color-green-secondary: #3BC36B;
+          --color-gray-dark: #1E1E1E;
+          --color-gray-light: #F5F5F5;
+          --color-yellow-accent: #FFCE33;
+
+          /* Semantic Color Tokens (Light Mode) */
+          --color-background: var(--color-cream-50);
+          --color-surface: var(--color-cream-100);
+          --color-text: var(--color-slate-900);
+          --color-text-secondary: var(--color-slate-500);
+          --color-primary: var(--color-orange-primary);
+          --color-primary-hover: var(--color-orange-hover);
+          --color-primary-active: var(--color-orange-active);
+          --color-secondary: var(--color-green-secondary);
+          --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+          --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+          --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+          --color-btn-primary-text: var(--color-cream-50);
+          --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+          --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+          --color-error: var(--color-red-500);
+          --color-success: var(--color-teal-500);
+          --color-warning: var(--color-orange-500);
+          --color-info: var(--color-slate-500);
+          --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+          --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+          /* Common style patterns */
+          --focus-ring: 0 0 0 3px var(--color-focus-ring);
+          --focus-outline: 2px solid var(--color-primary);
+          --status-bg-opacity: 0.15;
+          --status-border-opacity: 0.25;
+          --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+          --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+          /* RGB versions for opacity control */
+          --color-success-rgb: 33, 128, 141;
+          --color-error-rgb: 192, 21, 47;
+          --color-warning-rgb: 168, 75, 47;
+          --color-info-rgb: 98, 108, 113;
+
+          /* Typography */
+          --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+            Monaco, Consolas, monospace;
+          --font-size-xs: 11px;
+          --font-size-sm: 12px;
+          --font-size-base: 14px;
+          --font-size-md: 14px;
+          --font-size-lg: 16px;
+          --font-size-xl: 18px;
+          --font-size-2xl: 20px;
+          --font-size-3xl: 24px;
+          --font-size-4xl: 30px;
+          --font-weight-normal: 400;
+          --font-weight-medium: 500;
+          --font-weight-semibold: 550;
+          --font-weight-bold: 600;
+          --line-height-tight: 1.2;
+          --line-height-normal: 1.5;
+          --letter-spacing-tight: -0.01em;
+
+          /* Spacing */
+          --space-0: 0;
+          --space-1: 1px;
+          --space-2: 2px;
+          --space-4: 4px;
+          --space-6: 6px;
+          --space-8: 8px;
+          --space-10: 10px;
+          --space-12: 12px;
+          --space-16: 16px;
+          --space-20: 20px;
+          --space-24: 24px;
+          --space-32: 32px;
+
+          /* Border Radius */
+          --radius-sm: 6px;
+          --radius-base: 8px;
+          --radius-md: 10px;
+          --radius-lg: 12px;
+          --radius-full: 9999px;
+
+          /* Shadows */
+          --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+          --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+          --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+            0 2px 4px -1px rgba(0, 0, 0, 0.02);
+          --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+            0 4px 6px -2px rgba(0, 0, 0, 0.02);
+          --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+          /* Animation */
+          --duration-fast: 150ms;
+          --duration-normal: 250ms;
+          --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+          /* Layout */
+          --container-sm: 640px;
+          --container-md: 768px;
+          --container-lg: 1024px;
+          --container-xl: 1280px;
+        }
+
+        /* Base styles */
+        html {
+          font-size: var(--font-size-base);
+          font-family: var(--font-family-base);
+          line-height: var(--line-height-normal);
+          color: var(--color-text);
+          background-color: var(--color-background);
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+        }
+
+        *,
+        *::before,
+        *::after {
+          box-sizing: inherit;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          margin: 0;
+          font-weight: var(--font-weight-semibold);
+          line-height: var(--line-height-tight);
+          color: var(--color-text);
+          letter-spacing: var(--letter-spacing-tight);
+        }
+
+        h1 {
+          font-size: var(--font-size-4xl);
+        }
+        h2 {
+          font-size: var(--font-size-3xl);
+        }
+        h3 {
+          font-size: var(--font-size-2xl);
+        }
+        h4 {
+          font-size: var(--font-size-xl);
+        }
+        h5 {
+          font-size: var(--font-size-lg);
+        }
+        h6 {
+          font-size: var(--font-size-md);
+        }
+
+        p {
+          margin: 0 0 var(--space-16) 0;
+        }
+
+        a {
+          color: var(--color-primary);
+          text-decoration: none;
+          transition: color var(--duration-fast) var(--ease-standard);
+        }
+
+        a:hover {
+          color: var(--color-primary-hover);
+        }
+
+        /* Buttons */
+        .btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: var(--space-12) var(--space-24);
+          border-radius: var(--radius-full);
+          font-size: var(--font-size-base);
+          font-weight: 500;
+          line-height: 1.5;
+          cursor: pointer;
+          transition: all var(--duration-normal) var(--ease-standard);
+          border: none;
+          text-decoration: none;
+          position: relative;
+        }
+
+        .btn:focus-visible {
+          outline: none;
+          box-shadow: var(--focus-ring);
+        }
+
+        .btn--primary {
+          background: var(--color-primary);
+          color: var(--color-btn-primary-text);
+        }
+
+        .btn--primary:hover {
+          background: var(--color-primary-hover);
+          transform: translateY(-2px);
+        }
+
+        .btn--primary:active {
+          background: var(--color-primary-active);
+        }
+
+        .btn--secondary {
+          background: var(--color-secondary);
+          color: var(--color-white);
+        }
+
+        .btn--secondary:hover {
+          background: var(--color-secondary-hover);
+          transform: translateY(-2px);
+        }
+
+        .btn--outline {
+          background: transparent;
+          border: 2px solid var(--color-primary);
+          color: var(--color-primary);
+        }
+
+        .btn--outline:hover {
+          background: var(--color-primary);
+          color: var(--color-white);
+          transform: translateY(-2px);
+        }
+
+        .btn--dark {
+          background: var(--color-gray-dark);
+          color: var(--color-white);
+        }
+
+        .btn--dark:hover {
+          background: #333;
+          transform: translateY(-2px);
+        }
+
+        .btn--sm {
+          padding: var(--space-8) var(--space-16);
+          font-size: var(--font-size-sm);
+          border-radius: var(--radius-base);
+        }
+
+        .btn--lg {
+          padding: var(--space-16) var(--space-32);
+          font-size: var(--font-size-lg);
+        }
+
+        .btn:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+          transform: none;
+        }
+
+        /* Form elements */
+        .form-control {
+          display: block;
+          width: 100%;
+          padding: var(--space-12) var(--space-16);
+          font-size: var(--font-size-md);
+          line-height: 1.5;
+          color: var(--color-text);
+          background-color: var(--color-surface);
+          border: 2px solid var(--color-border);
+          border-radius: var(--radius-base);
+          transition: border-color var(--duration-fast) var(--ease-standard),
+            box-shadow var(--duration-fast) var(--ease-standard);
+        }
+
+        .form-control:focus {
+          border-color: var(--color-primary);
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        .form-label {
+          display: block;
+          margin-bottom: var(--space-8);
+          font-weight: var(--font-weight-medium);
+          font-size: var(--font-size-md);
+          color: var(--color-text);
+        }
+
+        .form-group {
+          margin-bottom: var(--space-20);
+        }
+
+        /* Card component */
+        .card {
+          background-color: var(--color-surface);
+          border-radius: var(--radius-lg);
+          border: 1px solid var(--color-card-border);
+          box-shadow: var(--shadow-sm);
+          overflow: hidden;
+          transition: box-shadow var(--duration-normal) var(--ease-standard),
+                      transform var(--duration-normal) var(--ease-standard);
+        }
+
+        .card:hover {
+          box-shadow: var(--shadow-lg);
+          transform: translateY(-2px);
+        }
+
+        .card__body {
+          padding: var(--space-24);
+        }
+
+        /* Container layout */
+        .container {
+          width: 100%;
+          margin-right: auto;
+          margin-left: auto;
+          padding-right: var(--space-16);
+          padding-left: var(--space-16);
+        }
+
+        @media (min-width: 640px) {
+          .container {
+            max-width: var(--container-sm);
+          }
+        }
+        @media (min-width: 768px) {
+          .container {
+            max-width: var(--container-md);
+          }
+        }
+        @media (min-width: 1024px) {
+          .container {
+            max-width: var(--container-lg);
+          }
+        }
+        @media (min-width: 1280px) {
+          .container {
+            max-width: var(--container-xl);
+          }
+        }
+
+        /* Utility classes */
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .text-center { text-align: center; }
+        .text-white { color: var(--color-white); }
+        .bg-primary { background-color: var(--color-primary); }
+        .bg-secondary { background-color: var(--color-secondary); }
+        .bg-gray-light { background-color: var(--color-gray-light); }
+        .bg-gray-dark { background-color: var(--color-gray-dark); }
+        .hidden { display: none; }
+        .block { display: block; }
+
+        /* Navigation */
+        .navbar {
+          background: var(--color-white);
+          box-shadow: var(--shadow-sm);
+          position: sticky;
+          top: 0;
+          z-index: 100;
+        }
+
+        .navbar__container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: var(--space-16) var(--space-24);
+        }
+
+        /* Mobile menu button */
+        .mobile-menu-btn {
+          display: none;
+          flex-direction: column;
+          justify-content: space-around;
+          width: 24px;
+          height: 24px;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          z-index: 9999;
+          position: relative;
+        }
+
+        .hamburger-line {
+          width: 24px;
+          height: 3px;
+          background-color: var(--color-text);
+          border-radius: 2px;
+          transition: all 0.3s ease;
+          transform-origin: center;
+        }
+
+        /* Hamburger animation when active */
+        .mobile-menu-btn.active .hamburger-line:nth-child(1) {
+          transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(2) {
+          opacity: 0;
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(3) {
+          transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile menu overlay */
+        .mobile-menu-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 9998;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+          position: fixed;
+          top: 0;
+          right: -300px;
+          width: 280px;
+          height: 100%;
+          background: var(--color-white);
+          box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+          z-index: 9999;
+          transition: right 0.3s ease;
+          overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+          right: 0;
+        }
+
+        .mobile-menu-content {
+          padding: 80px 24px 24px 24px;
+        }
+
+        .mobile-menu-list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .mobile-menu-list li {
+          margin-bottom: var(--space-16);
+        }
+
+        .mobile-menu-list a {
+          display: block;
+          padding: var(--space-12) 0;
+          color: var(--color-text);
+          font-weight: var(--font-weight-medium);
+          font-size: var(--font-size-lg);
+          text-decoration: none;
+          border-bottom: 1px solid var(--color-border);
+          transition: color var(--duration-fast);
+        }
+
+        .mobile-menu-list a:hover {
+          color: var(--color-primary);
+        }
+
+        .logo {
+          display: flex;
+          align-items: center;
+          height: 50px;
+          text-decoration: none;
+        }
+
+        .logo {
+          height: 50px;
+          width: auto;
+          object-fit: contain;
+          cursor: pointer;
+        }
+
+        /* Desktop menu */
+        .desktop-menu {
+          display: none;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          gap: var(--space-32);
+        }
+
+        /* Mobile/Desktop responsive rules */
+        @media (min-width: 769px) {
+          .mobile-menu-btn {
+            display: none;
+          }
+          .desktop-menu {
+            display: flex;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .desktop-menu {
+            display: none;
+          }
+          .mobile-menu-btn {
+            display: flex;
+          }
+        }
+
+        .desktop-menu a {
+          color: var(--color-text);
+          font-weight: var(--font-weight-medium);
+          transition: color var(--duration-fast);
+        }
+
+        .desktop-menu a:hover {
+          color: var(--color-primary);
+        }
+
+        /* Page sections */
+        .page {
+          display: none;
+        }
+
+        .page.active {
+          display: block;
+        }
+
+        .hero {
+          background: linear-gradient(135deg, var(--color-gray-light) 0%, #fff 100%);
+          padding: 80px 0;
+          text-align: center;
+        }
+
+        .hero h1 {
+          font-size: 3rem;
+          margin-bottom: var(--space-24);
+          color: var(--color-gray-dark);
+        }
+
+        .hero p {
+          font-size: var(--font-size-xl);
+          color: var(--color-text-secondary);
+          margin-bottom: 2rem;
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .hero .btn {
+          margin: 0 var(--space-8);
+        }
+
+        .section {
+          padding: 60px 0;
+        }
+
+        .section-title {
+          text-align: center;
+          font-size: 2.5rem;
+          margin-bottom: 3rem;
+          color: var(--color-gray-dark);
+        }
+
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: var(--space-32);
+          margin-top: 3rem;
+        }
+
+        .feature-card {
+          text-align: center;
+          padding: var(--space-24);
+        }
+
+        .feature-icon {
+          width: 60px;
+          height: 60px;
+          background: var(--color-primary);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto var(--space-16) auto;
+          color: var(--color-white);
+          font-size: var(--font-size-2xl);
+        }
+
+        .testimonials {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: var(--space-24);
+          margin-top: 2rem;
+        }
+
+        .testimonial {
+          background: var(--color-white);
+          padding: var(--space-24);
+          border-radius: var(--radius-lg);
+          box-shadow: var(--shadow-sm);
+          text-align: center;
+        }
+
+        .testimonial-avatar {
+          width: 60px;
+          height: 60px;
+          background: var(--color-primary);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto var(--space-16) auto;
+          color: var(--color-white);
+          font-weight: bold;
+        }
+
+        .cta-section {
+          background: var(--color-primary);
+          color: var(--color-white);
+          text-align: center;
+          padding: 80px 0;
+        }
+
+        .cta-section h2 {
+          color: var(--color-white);
+          margin-bottom: var(--space-24);
+        }
+
+        .footer {
+          background: var(--color-gray-dark);
+          color: var(--color-gray-300);
+          padding: 40px 0 20px 0;
+        }
+
+        .footer-content {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: var(--space-32);
+          margin-bottom: var(--space-24);
+        }
+
+        .footer-section h4 {
+          color: var(--color-white);
+          margin-bottom: var(--space-16);
+        }
+
+        .footer-section p,
+        .footer-section a {
+          color: var(--color-gray-300);
+          margin-bottom: var(--space-8);
+        }
+
+        .footer-section a:hover {
+          color: var(--color-primary);
+        }
+
+        .footer-bottom {
+          text-align: center;
+          padding-top: var(--space-24);
+          border-top: 1px solid #333;
+        }
+
+        /* Specific page styles */
+        .motoboy-container,
+        .admin-container,
+        .registro-container {
+          max-width: 500px;
+          margin: 2rem auto;
+          padding: 0 var(--space-16);
+        }
+
+        .message {
+          padding: var(--space-16) var(--space-20);
+          border-radius: var(--radius-base);
+          margin-bottom: var(--space-16);
+          text-align: center;
+          font-weight: var(--font-weight-medium);
+        }
+
+        .message--success {
+          background: rgba(var(--color-success-rgb), 0.1);
+          border: 1px solid rgba(var(--color-success-rgb), 0.3);
+          color: var(--color-success);
+        }
+
+        .message--error {
+          background: rgba(var(--color-error-rgb), 0.1);
+          border: 1px solid rgba(var(--color-error-rgb), 0.3);
+          color: var(--color-error);
+        }
+
+        .message--warning {
+          background: rgba(255, 193, 7, 0.1);
+          border: 1px solid rgba(255, 193, 7, 0.3);
+          color: #856404;
+        }
+
+        .message--loading {
+          background: rgba(var(--color-info-rgb), 0.1);
+          border: 1px solid rgba(var(--color-info-rgb), 0.3);
+          color: var(--color-info);
+        }
+
+        .admin-dashboard {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: var(--space-24);
+          margin-top: var(--space-24);
+        }
+
+        .stat-card {
+          background: var(--color-white);
+          padding: var(--space-24);
+          border-radius: var(--radius-lg);
+          box-shadow: var(--shadow-sm);
+          text-align: center;
+        }
+
+        .stat-number {
+          font-size: 2.5rem;
+          font-weight: var(--font-weight-bold);
+          color: var(--color-primary);
+        }
+
+        .stat-label {
+          color: var(--color-text-secondary);
+          margin-top: var(--space-8);
+        }
+
+        .loading-spinner {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          border: 3px solid var(--color-gray-300);
+          border-radius: 50%;
+          border-top-color: var(--color-primary);
+          animation: spin 1s ease-in-out infinite;
+          margin-right: var(--space-8);
+        }
+
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+
+        .price-highlight {
+          font-size: 3rem;
+          font-weight: var(--font-weight-bold);
+          color: var(--color-primary);
+          margin: var(--space-16) 0;
+        }
+
+        /* Terms and Privacy Pages Styles */
+        .terms-content section,
+        .privacy-content section {
+          border-left: 4px solid var(--color-primary);
+          padding-left: 20px;
+          margin-bottom: 2rem;
+        }
+
+        .terms-content h3,
+        .privacy-content h3 {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .terms-content ul,
+        .privacy-content ul {
+          margin: 16px 0;
+        }
+
+        .terms-content li,
+        .privacy-content li {
+          margin-bottom: 8px;
+        }
+
+        /* Consent Modal Styles */
+        .modal-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.7);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 10000;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity var(--duration-normal) var(--ease-standard),
+                      visibility var(--duration-normal) var(--ease-standard);
+        }
+
+        .modal-overlay.active {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .consent-modal {
+          background: var(--color-surface);
+          border-radius: var(--radius-lg);
+          box-shadow: var(--shadow-lg);
+          max-width: 600px;
+          width: 90%;
+          max-height: 90vh;
+          overflow-y: auto;
+          transform: scale(0.7) translateY(50px);
+          transition: transform var(--duration-normal) var(--ease-standard);
+        }
+
+        .modal-overlay.active .consent-modal {
+          transform: scale(1) translateY(0);
+        }
+
+        .consent-modal-header {
+          padding: var(--space-24) var(--space-24) var(--space-16) var(--space-24);
+          border-bottom: 1px solid var(--color-card-border);
+        }
+
+        .consent-modal-title {
+          font-size: var(--font-size-2xl);
+          font-weight: var(--font-weight-bold);
+          color: var(--color-text);
+          margin: 0;
+          text-align: center;
+        }
+
+        .consent-modal-body {
+          padding: var(--space-24);
+        }
+
+        .consent-text {
+          font-size: var(--font-size-base);
+          line-height: var(--line-height-normal);
+          color: var(--color-text);
+          margin-bottom: var(--space-24);
+        }
+
+        .consent-text a {
+          color: var(--color-primary);
+          font-weight: var(--font-weight-medium);
+          text-decoration: underline;
+        }
+
+        .consent-text a:hover {
+          color: var(--color-primary-hover);
+        }
+
+        .consent-checkbox-container {
+          display: flex;
+          align-items: flex-start;
+          gap: var(--space-12);
+          margin-bottom: var(--space-24);
+          padding: var(--space-16);
+          background: var(--color-bg-3);
+          border-radius: var(--radius-base);
+          border: 2px solid var(--color-border);
+        }
+
+        .consent-checkbox {
+          width: 18px;
+          height: 18px;
+          margin: 0;
+          cursor: pointer;
+          accent-color: var(--color-primary);
+          flex-shrink: 0;
+          margin-top: 2px;
+        }
+
+        .consent-checkbox-label {
+          font-size: var(--font-size-base);
+          font-weight: var(--font-weight-medium);
+          color: var(--color-text);
+          cursor: pointer;
+          user-select: none;
+        }
+
+        .consent-modal-footer {
+          padding: var(--space-16) var(--space-24) var(--space-24) var(--space-24);
+          display: flex;
+          gap: var(--space-12);
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .consent-btn {
+          padding: var(--space-12) var(--space-24);
+          border-radius: var(--radius-base);
+          font-size: var(--font-size-base);
+          font-weight: var(--font-weight-medium);
+          cursor: pointer;
+          transition: all var(--duration-normal) var(--ease-standard);
+          border: none;
+          min-width: 160px;
+        }
+
+        .consent-btn--cancel {
+          background: var(--color-secondary);
+          color: var(--color-text);
+          border: 1px solid var(--color-border);
+        }
+
+        .consent-btn--cancel:hover {
+          background: var(--color-secondary-hover);
+        }
+
+        .consent-btn--confirm {
+          background: var(--color-primary);
+          color: var(--color-btn-primary-text);
+        }
+
+        .consent-btn--confirm:hover:not(:disabled) {
+          background: var(--color-primary-hover);
+        }
+
+        .consent-btn--confirm:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+          background: var(--color-gray-400);
+        }
+
+        /* Consent Modal Links Styling */
+        .modal-content a,
+        .consent-text a,
+        .modal-link {
+          color: var(--color-primary) !important;
+          text-decoration: underline;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+
+        .modal-content a:hover,
+        .consent-text a:hover,
+        .modal-link:hover {
+          color: var(--color-primary-hover) !important;
+          text-decoration: underline;
+        }
+
+        .modal-link:focus {
+          outline: 2px solid var(--color-primary);
+          outline-offset: 2px;
+        }
+
+        /* FAQ Styles */
+        .faq-section {
+          margin: 60px 0;
+          background: var(--color-bg-3);
+          padding: 40px;
+          border-radius: var(--radius-lg);
+        }
+
+        .faq-title {
+          font-size: var(--font-size-3xl);
+          font-weight: var(--font-weight-bold);
+          color: var(--color-text);
+          text-align: center;
+          margin-bottom: var(--space-16);
+        }
+
+        .faq-subtitle {
+          font-size: var(--font-size-xl);
+          color: var(--color-text-secondary);
+          text-align: center;
+          margin-bottom: var(--space-32);
+        }
+
+        .faq-container {
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .faq-item {
+          background: var(--color-surface);
+          border: 1px solid var(--color-card-border);
+          border-radius: var(--radius-base);
+          margin-bottom: var(--space-16);
+          overflow: hidden;
+          transition: box-shadow var(--duration-normal) var(--ease-standard);
+        }
+
+        .faq-item:hover {
+          box-shadow: var(--shadow-md);
+        }
+
+        .faq-question {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: var(--space-20) var(--space-24);
+          cursor: pointer;
+          font-weight: var(--font-weight-bold);
+          font-size: var(--font-size-lg);
+          color: var(--color-text);
+          background: var(--color-surface);
+          border: none;
+          width: 100%;
+          text-align: left;
+          transition: background-color var(--duration-fast) var(--ease-standard);
+        }
+
+        .faq-question:hover {
+          background: rgba(var(--color-primary), 0.05);
+        }
+
+        .faq-question.active {
+          background: rgba(var(--color-primary), 0.1);
+          color: var(--color-primary);
+        }
+
+        .faq-icon {
+          width: 24px;
+          height: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--color-primary);
+          color: var(--color-white);
+          border-radius: var(--radius-full);
+          font-size: var(--font-size-sm);
+          font-weight: var(--font-weight-bold);
+          flex-shrink: 0;
+          transition: transform var(--duration-normal) var(--ease-standard);
+        }
+
+        .faq-question.active .faq-icon {
+          transform: rotate(45deg);
+        }
+
+        .faq-answer {
+          padding: 0 var(--space-24) var(--space-20) var(--space-24);
+          font-size: var(--font-size-base);
+          line-height: var(--line-height-normal);
+          color: var(--color-text);
+          background: var(--color-surface);
+          border-top: 1px solid var(--color-card-border-inner);
+          max-height: 0;
+          overflow: hidden;
+          opacity: 0;
+          transition: max-height var(--duration-normal) var(--ease-standard),
+                      opacity var(--duration-normal) var(--ease-standard),
+                      padding var(--duration-normal) var(--ease-standard);
+        }
+
+        .faq-answer.active {
+          max-height: 500px;
+          opacity: 1;
+        }
+
+        .faq-answer.active {
+          padding: var(--space-20) var(--space-24);
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+          .hero h1 {
+            font-size: 2rem;
+          }
+          
+          .hero p {
+            font-size: var(--font-size-lg);
+          }
+          
+          .section-title {
+            font-size: 2rem;
+          }
+          
+          .features-grid {
+            grid-template-columns: 1fr;
+          }
+          
+          .hero .btn {
+            display: block;
+            margin: var(--space-8) 0;
+          }
+
+          /* Mobile adjustments for legal pages */
+          #termos .container,
+          #privacidade .container {
+            padding: 20px 16px;
+          }
+
+          #termos .card__body,
+          #privacidade .card__body {
+            padding: 24px 20px;
+          }
+
+          .terms-content section,
+          .privacy-content section {
+            padding-left: 12px;
+            border-left-width: 3px;
+          }
+
+          /* Consent Modal Mobile */
+          .consent-modal {
+            width: 95%;
+            margin: var(--space-16);
+          }
+
+          .consent-modal-header,
+          .consent-modal-body {
+            padding: var(--space-20);
+          }
+
+          .consent-modal-footer {
+            padding: var(--space-16) var(--space-20) var(--space-20) var(--space-20);
+            flex-direction: column;
+          }
+
+          .consent-btn {
+            width: 100%;
+            min-width: auto;
+          }
+
+          .consent-modal-title {
+            font-size: var(--font-size-xl);
+          }
+
+          /* FAQ Mobile Styles */
+          .faq-section {
+            margin: 40px 0;
+            padding: 24px 20px;
+          }
+
+          .faq-title {
+            font-size: var(--font-size-2xl);
+          }
+
+          .faq-subtitle {
+            font-size: var(--font-size-lg);
+          }
+
+          .faq-question {
+            padding: var(--space-16) var(--space-20);
+            font-size: var(--font-size-base);
+          }
+
+          .faq-answer {
+            padding: 0 var(--space-20) var(--space-16) var(--space-20);
+            font-size: var(--font-size-sm);
+          }
+
+          .faq-answer.active {
+            padding: var(--space-16) var(--space-20);
+          }
+        }
+
+        @font-face {
+          font-family: 'FKGroteskNeue';
+          src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
+            format('woff2');
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="#" onclick="showPage('home')" class="logo">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCXFlaIAAAAAAAAAAAAAAAAGFjc3AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAIAAAAAAAbGRoMH3lnAAALnQAAa2YAAAQuAAAi34AAFdBPAEAQhC3EcAAAAAAfAAcAIBBfAAGjjwAAGRwNAAEfAABc31BBLAABgAA" alt="Chegou Aí" class="logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display: none; font-size: 18px; font-weight: bold; color: #FF6B35;">Chegou Aí</span>
+            </a>
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <!-- Desktop menu -->
+            <ul class="nav-menu desktop-menu">
+                <li><a href="#" onclick="showPage('home')">Início</a></li>
+                <li><a href="#" onclick="showPage('home')">Como Funciona</a></li>
+                <li><a href="#" onclick="showPage('moradores')">Para Moradores</a></li>
+                <li><a href="#" onclick="showPage('motoboys-info')">Para Motoboys</a></li>
+                <li><a href="#" onclick="showPage('admin')" style="color: var(--color-text-secondary);">Admin</a></li>
+            </ul>
+            
+            <!-- Mobile menu overlay -->
+            <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+            
+            <!-- Mobile menu -->
+            <nav class="mobile-menu" id="mobileMenu">
+                <div class="mobile-menu-content">
+                    <ul class="mobile-menu-list">
+                        <li><a href="#" onclick="showPage('home'); closeMobileMenu()">Início</a></li>
+                        <li><a href="#" onclick="showPage('home'); closeMobileMenu()">Como Funciona</a></li>
+                        <li><a href="#" onclick="showPage('moradores'); closeMobileMenu()">Para Moradores</a></li>
+                        <li><a href="#" onclick="showPage('motoboys-info'); closeMobileMenu()">Para Motoboys</a></li>
+                        <li><a href="#" onclick="showPage('termos'); closeMobileMenu()">Termos de Uso</a></li>
+                        <li><a href="#" onclick="showPage('privacidade'); closeMobileMenu()">Política de Privacidade</a></li>
+                        <li><a href="#" onclick="showPage('termos-motoboy'); closeMobileMenu()">Termos - Motoboy</a></li>
+                        <li><a href="#" onclick="showPage('privacidade-motoboy'); closeMobileMenu()">Privacidade - Motoboy</a></li>
+                        <li><a href="#" onclick="showPage('admin'); closeMobileMenu()" style="color: var(--color-text-secondary);">Admin</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Seu lanche chegou e você nem precisou atender o interfone 🍔📲</h1>
+                <p>O app que conecta entregadores e moradores com mensagens automáticas via WhatsApp.</p>
+                <div>
+                    <button class="btn btn--primary btn--lg" onclick="showConsentModal()">
+                        🟢 Quero Participar
+                    </button>
+                    <button class="btn btn--dark btn--lg" onclick="showPage('motoboy')">
+                        ⚫ Sou Motoboy
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Como Funciona -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Como Funciona</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <h3>QR Code</h3>
+                        <p>O motoboy escaneia o QR Code na portaria.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-edit"></i>
+                        </div>
+                        <h3>Formulário</h3>
+                        <p>Ele informa o nome e número do cliente.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>Robô</h3>
+                        <p>O sistema identifica o cadastro e envia uma mensagem.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3>WhatsApp</h3>
+                        <p>O cliente é avisado na hora que o pedido chegou.</p>
+                    </div>
+                </div>
+                <p class="text-center" style="margin-top: 2rem; font-size: var(--font-size-lg); color: var(--color-text-secondary);">Simples, rápido e sem depender da portaria.</p>
+            </div>
+        </section>
+
+        <!-- Plano Mensal -->
+        <section class="section bg-gray-light">
+            <div class="container text-center">
+                <h2 class="section-title">R$ 9,90 por mês — menos do que um lanche!</h2>
+                <div class="price-highlight">R$ 9,90</div>
+                <p style="font-size: var(--font-size-lg); max-width: 600px; margin: 0 auto;">Tenha praticidade e agilidade nas suas entregas por um valor simbólico. Cadastre-se em segundos e comece a receber notificações automáticas.</p>
+                <button class="btn btn--primary btn--lg" onclick="showPage('moradores')" style="margin-top: var(--space-24);">
+                    Ver planos para moradores
+                </button>
+            </div>
+        </section>
+
+        <!-- Para Moradores -->
+        <section class="section">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <h2 class="section-title">Chegou Aí — o jeito moderno de saber quando sua entrega chegou!</h2>
+                    <p style="font-size: var(--font-size-lg); margin-bottom: 2rem;">Cansado de o porteiro esquecer de avisar? Com o Chegou Aí, você recebe uma mensagem automática no WhatsApp assim que o entregador chega ao condomínio.</p>
+                    
+                    <div class="features-grid" style="margin-top: 2rem;">
+                        <div class="feature-card">
+                            <div class="feature-icon bg-secondary">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <h4>✅ Receba alertas instantâneos</h4>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon bg-secondary">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h4>✅ Evite confusão e atraso</h4>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon bg-secondary">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4>✅ Sem baixar aplicativo</h4>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon bg-secondary">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <h4>✅ Comunicação direta via WhatsApp</h4>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn--primary btn--lg" onclick="showConsentModal()" style="margin-top: 2rem;">
+                        Quero Participar
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Para Motoboys -->
+        <section class="section bg-gray-light">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <h2 class="section-title">Entregue mais rápido, sem dor de cabeça.</h2>
+                    <p style="font-size: var(--font-size-lg); margin-bottom: 2rem;">Chegou Aí é o parceiro ideal para quem faz muitas entregas em condomínios. Esqueça a espera na portaria — nosso sistema avisa o cliente por você.</p>
+                    
+                    <div class="features-grid" style="margin-top: 2rem;">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h4>🕒 Economize tempo</h4>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-box"></i>
+                            </div>
+                            <h4>📦 Entregue mais pedidos</h4>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                            <h4>📲 100% gratuito</h4>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <h4>💬 Mensagem automática no WhatsApp</h4>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn--primary btn--lg" onclick="showPage('motoboy')" style="margin-top: 2rem;">
+                        Sou Motoboy
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Depoimentos -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Quem já usa, recomenda!</h2>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <div class="testimonial-avatar">C</div>
+                        <p>"Antes eu perdia tempo na portaria, agora o cliente desce na hora!"</p>
+                        <strong>Carlos, motoboy</strong>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-avatar">A</div>
+                        <p>"Nunca mais precisei ligar pro porteiro!"</p>
+                        <strong>Amanda, moradora</strong>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-avatar">R</div>
+                        <p>"Consigo fazer mais entregas por dia com o Chegou Aí!"</p>
+                        <strong>Roberto, motoboy</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Transforme a forma como seu condomínio recebe entregas!</h2>
+                <p style="font-size: var(--font-size-xl); margin-bottom: 2rem;">Apenas R$ 9,90 por mês — cadastre-se agora mesmo.</p>
+                <div>
+                    <button class="btn btn--outline" onclick="showPage('moradores')" style="border-color: white; color: white; margin-right: var(--space-16);">
+                        Para Moradores
+                    </button>
+                    <button class="btn" onclick="showPage('motoboy')" style="background: white; color: var(--color-primary);">
+                        Sou Motoboy
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <div class="logo" style="margin-bottom: var(--space-16);">
+                            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCXFlaIAAAAAAAAAAAAAAAAGFjc3AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAIAAAAAAAbGRoMH3lnAAALnQAAa2YAAAQuAAAi34AAFdBPAEAQhC3EcAAAAAAfAAcAIBBfAAGjjwAAGRwNAAEfAABc31BBLAABgAA" alt="Chegou Aí" class="logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <span style="display: none; font-size: 18px; font-weight: bold; color: #FF6B35;">Chegou Aí</span>
+                        </div>
+                        <p>Conectando motoboys e moradores via notificações automáticas no WhatsApp.<br>Rápido, simples e sem depender da portaria.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Links Úteis</h4>
+                        <p><a href="#" onclick="showPage('home')">Início</a></p>
+                        <p><a href="#" onclick="showPage('termos')">Termos de Uso</a></p>
+                        <p><a href="#" onclick="showPage('privacidade')">Política de Privacidade</a></p>
+                        <p><a href="https://wa.me/5542998456017" target="_blank">Suporte</a></p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contato</h4>
+                        <p><i class="fas fa-phone"></i> (42)99845-6017</p>
+                        <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/5542998456017" target="_blank">(42)99845-6017</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:chegouai.atendimento@gmail.com">chegouai.atendimento@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 Chegou Aí. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Motoboy Page -->
+    <div id="motoboy" class="page">
+        <div class="motoboy-container">
+            <div class="card">
+                <div class="card__body">
+                    <div class="text-center" style="margin-bottom: 2rem;">
+                        <div class="logo" style="justify-content: center;">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMjAwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjRkY2QjM1Ii8+Cjx0ZXh0IHg9IjEwIiB5PSIzMiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiPkNoZWdvdSBBw608L3RleHQ+Cjwvc3ZnPgo=" alt="Chegou Aí">
+                        </div>
+                        <h2>Portal do Motoboy</h2>
+                        <p>Notifique o cliente da entrega</p>
+                    </div>
+
+                    <div id="motoboyMessage" class="message hidden"></div>
+
+                    <form id="motoboyForm">
+                        <div class="form-group">
+                            <label class="form-label" for="clientName">Nome do Cliente</label>
+                            <input type="text" class="form-control" id="clientName" placeholder="Digite o nome do cliente" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="clientPhone">Número do Telefone</label>
+                            <input type="tel" class="form-control" id="clientPhone" placeholder="(42)99999-9999" required>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary" style="width: 100%; margin-bottom: var(--space-16);">
+                            <i class="fab fa-whatsapp" style="margin-right: var(--space-8);"></i>
+                            Enviar Mensagem pro Cliente
+                        </button>
+                    </form>
+
+                    <button class="btn btn--outline" onclick="showPage('home')" style="width: 100%;">
+                        Voltar ao Início
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Registro Page -->
+    <div id="registro" class="page">
+        <div class="registro-container">
+            <div class="card">
+                <div class="card__body">
+                    <div class="text-center" style="margin-bottom: 2rem;">
+                        <div class="logo" style="justify-content: center;">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMjAwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjRkY2QjM1Ii8+Cjx0ZXh0IHg9IjEwIiB5PSIzMiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiPkNoZWdvdSBBw608L3RleHQ+Cjwvc3ZnPgo=" alt="Chegou Aí">
+                        </div>
+                        <h2>Bem-vindo ao Chegou Aí! 🎉</h2>
+                        <p>Pagamento confirmado! Agora vamos finalizar seu cadastro.</p>
+                    </div>
+
+                    <div id="registroMessage" class="message hidden"></div>
+
+                    <div id="welcomeSection">
+                        <div style="background: var(--color-bg-3); padding: var(--space-20); border-radius: var(--radius-base); margin-bottom: var(--space-20);">
+                            <h3>Como funciona o cadastro:</h3>
+                            <ol style="margin: var(--space-16) 0;">
+                                <li>Preencha seu nome e telefone</li>
+                                <li>Clique em "Cadastrar Agora"</li>
+                                <li>Receba nossa mensagem de confirmação no WhatsApp</li>
+                                <li>Confirme o recebimento e pronto!</li>
+                            </ol>
+                        </div>
+
+                        <form id="registroForm">
+                            <div class="form-group">
+                                <label class="form-label" for="registroNome">Seu Nome Completo</label>
+                                <input type="text" class="form-control" id="registroNome" placeholder="Digite seu nome completo" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="registroTelefone">Seu Telefone</label>
+                                <input type="tel" class="form-control" id="registroTelefone" placeholder="(DD)9 98319895" required>
+                            </div>
+
+                            <button type="submit" class="btn btn--primary" style="width: 100%; margin-bottom: var(--space-16);">
+                                Cadastrar Agora
+                            </button>
+                        </form>
+                    </div>
+
+                    <div id="confirmationSection" class="hidden">
+                        <div class="message message--success">
+                            <h3>🎉 Seu cadastro foi feito com sucesso!</h3>
+                            <p>Nosso sistema enviará uma mensagem de confirmação para o número <strong id="confirmedPhone"></strong></p>
+                        </div>
+
+                        <div class="text-center">
+                            <p style="margin-bottom: var(--space-20);">Você recebeu a mensagem no WhatsApp?</p>
+                            <button id="receivedBtn" class="btn btn--secondary" style="width: 100%; margin-bottom: var(--space-12);">
+                                ✅ Recebi a mensagem
+                            </button>
+                            <button id="notReceivedBtn" class="btn btn--outline" style="width: 100%;">
+                                ❌ Não recebi a mensagem
+                            </button>
+                        </div>
+                    </div>
+
+                    <button class="btn btn--outline" onclick="showPage('home')" style="width: 100%; margin-top: var(--space-16);">
+                        Voltar ao Início
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Page -->
+    <div id="admin" class="page">
+        <div class="admin-container">
+            <!-- Login Form -->
+            <div id="adminLogin" class="card">
+                <div class="card__body">
+                    <div class="text-center" style="margin-bottom: 2rem;">
+                        <div class="logo" style="justify-content: center;">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMjAwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjRkY2QjM1Ii8+Cjx0ZXh0IHg9IjEwIiB5PSIzMiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiPkNoZWdvdSBBw608L3RleHQ+Cjwvc3ZnPgo=" alt="Chegou Aí">
+                        </div>
+                        <h2>Área Administrativa</h2>
+                    </div>
+
+                    <div id="adminMessage" class="message hidden"></div>
+
+                    <form id="adminLoginForm">
+                        <div class="form-group">
+                            <label class="form-label" for="adminUser">Usuário</label>
+                            <input type="text" class="form-control" id="adminUser" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="adminPassword">Senha</label>
+                            <input type="password" class="form-control" id="adminPassword" required>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary" style="width: 100%; margin-bottom: var(--space-16);">
+                            Entrar
+                        </button>
+                    </form>
+
+                    <button class="btn btn--outline" onclick="showPage('home')" style="width: 100%;">
+                        Voltar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Admin Dashboard -->
+            <div id="adminDashboard" class="hidden">
+                <div class="card">
+                    <div class="card__body">
+                        <div class="text-center" style="margin-bottom: 2rem;">
+                            <div class="logo" style="justify-content: center;">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMjAwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjRkY2QjM1Ii8+Cjx0ZXh0IHg9IjEwIiB5PSIzMiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiPkNoZWdvdSBBw608L3RleHQ+Cjwvc3ZnPgo=" alt="Chegou Aí">
+                            </div>
+                            <h2>Dashboard Administrativo</h2>
+                            <button class="btn btn--outline" onclick="logout()" style="float: right;">Sair</button>
+                        </div>
+
+                        <div class="admin-dashboard">
+                            <div class="stat-card">
+                                <div class="stat-number" id="totalClients">127</div>
+                                <div class="stat-label">Clientes Cadastrados</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="totalMessages">1,543</div>
+                                <div class="stat-label">Mensagens Enviadas</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="totalRevenue">R$ 1.258,30</div>
+                                <div class="stat-label">Receita Mensal</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="activePlans">96</div>
+                                <div class="stat-label">Planos Ativos</div>
+                            </div>
+                        </div>
+
+                        <div class="card" style="margin-top: var(--space-24);">
+                            <div class="card__body">
+                                <h3>Clientes Recentes</h3>
+                                <div id="clientsList">
+                                    <div style="display: flex; justify-content: space-between; padding: var(--space-8) 0; border-bottom: 1px solid var(--color-border);">
+                                        <span>João Silva</span>
+                                        <span>(41)99856-4321</span>
+                                        <span class="message--success" style="padding: 2px 8px; border-radius: var(--radius-sm); font-size: var(--font-size-xs);">Ativo</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; padding: var(--space-8) 0; border-bottom: 1px solid var(--color-border);">
+                                        <span>Maria Santos</span>
+                                        <span>(42)98765-1234</span>
+                                        <span class="message--success" style="padding: 2px 8px; border-radius: var(--radius-sm); font-size: var(--font-size-xs);">Ativo</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; padding: var(--space-8) 0; border-bottom: 1px solid var(--color-border);">
+                                        <span>Pedro Costa</span>
+                                        <span>(43)99123-4567</span>
+                                        <span class="message--error" style="padding: 2px 8px; border-radius: var(--radius-sm); font-size: var(--font-size-xs);">Inativo</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Página Para Moradores -->
+    <div id="moradores" class="page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Chegou Aí para Moradores</h1>
+                <p class="text-center" style="font-size: var(--font-size-xl); margin-bottom: 2rem;">O jeito moderno de saber quando sua entrega chegou!</p>
+                
+                <!-- Hero Illustration -->
+                <div class="flex items-center justify-center" style="margin-bottom: 2rem;">
+                    <div style="font-size: 120px; margin-right: var(--space-24);">📱</div>
+                    <div style="text-align: left;">
+                        <h3>Cansado de o porteiro esquecer de avisar?</h3>
+                        <p style="font-size: var(--font-size-lg);">Com o Chegou Aí, você recebe uma mensagem automática no WhatsApp assim que o entregador chega ao condomínio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Como Funciona para Você -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Como Funciona para Você</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h4>Passo 1</h4>
+                        <p>Assine o plano mensal por R$ 9,90</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h4>Passo 2</h4>
+                        <p>Cadastre seu nome e telefone</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h4>Passo 3</h4>
+                        <p>Receba confirmação no WhatsApp</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4>Passo 4</h4>
+                        <p>Pronto! Agora você será avisado automaticamente</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefícios -->
+        <section class="section bg-gray-light">
+            <div class="container">
+                <h2 class="section-title">Benefícios Exclusivos</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon bg-secondary">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h4>✅ Receba alertas instantâneos no WhatsApp</h4>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon bg-secondary">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>✅ Evite confusão e atraso nas entregas</h4>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon bg-secondary">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>✅ Sem necessidade de baixar aplicativo</h4>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon bg-secondary">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h4>✅ Comunicação direta e automática</h4>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon bg-secondary">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <h4>✅ Funciona 24h por dia</h4>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon bg-secondary">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h4>✅ Ideal para condomínios</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Moradores -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="faq-title">💬 FAQ - Perguntas Frequentes</h2>
+                <p class="faq-subtitle">Dúvidas Mais Comuns dos Moradores</p>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>O que é exatamente o Chegou Aí?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            É um sistema que resolve o problema de comunicação na portaria do condomínio. Ele envia uma notificação automática via WhatsApp para você, o morador, assim que o motoboy chega com seu pedido.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Preciso baixar algum aplicativo?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Não! A grande vantagem é que você não precisa baixar nada. O sistema funciona via QR Code na portaria e envia a notificação direto para o seu WhatsApp, de forma simples e instantânea.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Quanto custa a assinatura?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            A assinatura mensal custa apenas R$ 9,90 por morador. Com este valor, você garante o aviso automático de todas as suas entregas no mês.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Como o sistema sabe que a entrega é minha?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Quando o motoboy chega, ele escaneia o QR Code e digita seu nome e número de WhatsApp. O sistema verifica nosso banco de dados, encontra seu cadastro e envia a notificação, sabendo que você é o destinatário.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>O Chegou Aí se responsabiliza pela minha entrega?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Não. O Chegou Aí é uma ferramenta de comunicação. Nós garantimos que o aviso será enviado. A responsabilidade pela entrega, embalagem e produto continua sendo do restaurante/loja e do motoboy.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Quem faz a cobrança da mensalidade?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Nossos pagamentos são processados pela parceira CAKTO PAY LTDA (CNPJ 52.328.926/0001-04). O Chegou Aí não armazena seus dados de cartão ou informações financeiras, garantindo sua segurança.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Quero cancelar. Tenho direito a reembolso?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Você pode cancelar a qualquer momento. Se o cancelamento for feito em até 7 dias após o pagamento, devolvemos o valor total. Se cancelar a partir do 8º dia, você continua usando o serviço até o fim do mês pago, mas não haverá nova cobrança na próxima renovação.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Meus dados de WhatsApp são seguros?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Sim, são 100% seguros. Usamos seu nome e WhatsApp somente para enviar a notificação de chegada. Seus dados são protegidos conforme a LGPD e não são compartilhados com terceiros (exceto a CAKTO PAY para a cobrança).
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>E se o motoboy digitar meu número errado?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Se o motoboy digitar um número incorreto, a notificação não chegará. Infelizmente, não podemos controlar o erro de digitação, mas ele pode tentar escanear o QR Code novamente para corrigir.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Plano Mensal -->
+        <section class="section">
+            <div class="container text-center">
+                <h2 class="section-title">Plano Mensal</h2>
+                <div class="price-highlight">Apenas R$ 9,90 por mês</div>
+                <p style="font-size: var(--font-size-xl); color: var(--color-text-secondary); margin-bottom: 2rem;">menos que um lanche!</p>
+                <p style="font-size: var(--font-size-lg); max-width: 600px; margin: 0 auto var(--space-32) auto;">Tenha praticidade e agilidade nas suas entregas por um valor simbólico</p>
+                <button class="btn btn--primary btn--lg" onclick="showConsentModal()">
+                    Quero me Cadastrar Agora
+                </button>
+            </div>
+        </section>
+
+        <!-- Depoimentos de Moradores -->
+        <section class="section bg-gray-light">
+            <div class="container">
+                <h2 class="section-title">O que os moradores estão dizendo</h2>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <div class="testimonial-avatar">A</div>
+                        <p>"Nunca mais precisei ligar pro porteiro!"</p>
+                        <strong>Amanda, moradora</strong>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-avatar">R</div>
+                        <p>"Recebo na hora que meu pedido chega!"</p>
+                        <strong>Roberto, morador</strong>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-avatar">C</div>
+                        <p>"Muito prático, recomendo!"</p>
+                        <strong>Carla, moradora</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="cta-section">
+            <div class="container text-center">
+                <h2>Transforme a forma como você recebe suas entregas!</h2>
+                <button class="btn btn--outline" onclick="showConsentModal()" style="border-color: white; color: white; margin-top: var(--space-24);">
+                    Assinar Agora
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <div class="logo" style="margin-bottom: var(--space-16);">
+                            <span style="font-size: 18px; font-weight: bold; color: #FF6B35;">Chegou Aí</span>
+                        </div>
+                        <p>Conectando motoboys e moradores via notificações automáticas no WhatsApp.<br>Rápido, simples e sem depender da portaria.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Links Úteis</h4>
+                        <p><a href="#" onclick="showPage('home')">Início</a></p>
+                        <p><a href="#" onclick="showPage('termos')">Termos de Uso</a></p>
+                        <p><a href="#" onclick="showPage('privacidade')">Política de Privacidade</a></p>
+                        <p><a href="https://wa.me/5542998456017" target="_blank">Suporte</a></p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contato</h4>
+                        <p><i class="fas fa-phone"></i> (42)99845-6017</p>
+                        <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/5542998456017" target="_blank">(42)99845-6017</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:chegouai.atendimento@gmail.com">chegouai.atendimento@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 Chegou Aí. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Página Para Motoboys Info -->
+    <div id="motoboys-info" class="page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Chegou Aí para Motoboys</h1>
+                <p class="text-center" style="font-size: var(--font-size-xl); margin-bottom: 2rem;">Entregue mais rápido, sem dor de cabeça</p>
+                
+                <!-- Hero Illustration -->
+                <div class="flex items-center justify-center" style="margin-bottom: 2rem;">
+                    <div style="font-size: 120px; margin-right: var(--space-24);">🏍️</div>
+                    <div style="text-align: left;">
+                        <h3>Chegou Aí é o parceiro ideal para entregadores</h3>
+                        <p style="font-size: var(--font-size-lg);">Esqueça a espera na portaria — nosso sistema avisa o cliente por você.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Como Funciona -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Como Funciona</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-motorcycle"></i>
+                        </div>
+                        <h4>Passo 1</h4>
+                        <p>Chegue no condomínio</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h4>Passo 2</h4>
+                        <p>Acesse nossa plataforma</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                        <h4>Passo 3</h4>
+                        <p>Digite nome e telefone do cliente</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <h4>Passo 4</h4>
+                        <p>Sistema envia mensagem automática</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h4>Passo 5</h4>
+                        <p>Cliente desce para pegar a entrega</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefícios -->
+        <section class="section bg-gray-light">
+            <div class="container">
+                <h2 class="section-title">Benefícios para Motoboys</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon bg-secondary">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>🕒 Economize tempo na portaria</h4>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon bg-secondary">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <h4>📦 Entregue mais pedidos por dia</h4>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon bg-secondary">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h4>📲 100% gratuito para motoboys</h4>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon bg-secondary">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h4>💬 Mensagem automática no WhatsApp</h4>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon bg-secondary">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h4>🎯 Comunicação direta com o cliente</h4>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon bg-secondary">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>⚡ Processo super rápido</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Motoboys -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="faq-title">🛟 FAQ - Perguntas Frequentes</h2>
+                <p class="faq-subtitle">Dúvidas Mais Comuns dos Motoboys</p>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>O Chegou Aí é pago para o Motoboy?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Não! A ferramenta é totalmente gratuita para os motoboys. O objetivo é facilitar o seu trabalho, economizando tempo e evitando atrasos.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Por que eu devo usar o QR Code do Chegou Aí?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Porque ele elimina a espera pela portaria! Em vez de aguardar o porteiro ligar, você avisa o cliente instantaneamente pelo WhatsApp. Isso agiliza a sua entrega e permite que você faça mais corridas por hora.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>O que devo fazer quando chego no condomínio?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            1. Escaneie o QR Code que estará disponível na portaria.<br>
+                            2. Digite o Nome e Número de WhatsApp do cliente que fez o pedido.<br>
+                            3. O sistema faz o resto!
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>O que acontece se o cliente não estiver cadastrado?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Se o cliente não for assinante do Chegou Aí, o sistema informará que o envio da notificação não foi possível. Nesse caso, você precisará seguir o procedimento padrão da portaria ou do aplicativo de entrega que você usa.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>O sistema salva o número do cliente no meu celular?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Não. O sistema Chegou Aí funciona em um navegador e não armazena o número do cliente no seu celular. Você apenas digita o dado para a notificação ser enviada, garantindo a privacidade do cliente.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Sou obrigado a usar o Chegou Aí?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Não. É uma ferramenta de uso opcional, oferecida para otimizar seu tempo. Você usa quando for mais conveniente e souber que o cliente pode estar cadastrado no sistema.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Se o cliente descer rápido, eu ganho alguma coisa?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Você ganha tempo! Menos tempo parado na portaria significa menos atrasos na sua rota, mais entregas concluídas e, consequentemente, mais lucro no final do dia.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Em caso de dúvidas sobre o funcionamento, quem eu procuro?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Se tiver algum problema ou dúvida sobre como usar o QR Code, entre em contato com nosso suporte:<br>
+                            📞 WhatsApp: (42) 99845-6017<br>
+                            📧 E-mail: <a href="mailto:chegouai.atendimento@gmail.com">chegouai.atendimento@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grátis para Motoboys -->
+        <section class="section">
+            <div class="container text-center">
+                <h2 class="section-title">Grátis para Motoboys!</h2>
+                <div style="max-width: 700px; margin: 0 auto;">
+                    <p style="font-size: var(--font-size-xl); margin-bottom: var(--space-24);">Nosso sistema é totalmente gratuito para entregadores!</p>
+                    <div class="card" style="margin-bottom: var(--space-24);">
+                        <div class="card__body">
+                            <ul style="text-align: left; font-size: var(--font-size-lg); line-height: 2;">
+                                <li>✅ Você só precisa usar nossa plataforma quando chegar no condomínio</li>
+                                <li>✅ Sem cadastro, sem mensalidade, sem complicação</li>
+                                <li>✅ Interface simples e rápida</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Depoimentos de Motoboys -->
+        <section class="section bg-gray-light">
+            <div class="container">
+                <h2 class="section-title">O que os motoboys estão dizendo</h2>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <div class="testimonial-avatar">C</div>
+                        <p>"Antes eu perdia tempo na portaria, agora o cliente desce na hora!"</p>
+                        <strong>Carlos, motoboy</strong>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-avatar">R</div>
+                        <p>"Consigo fazer mais entregas por dia!"</p>
+                        <strong>Roberto, motoboy</strong>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-avatar">J</div>
+                        <p>"Sistema muito fácil de usar!"</p>
+                        <strong>João, motoboy</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legal Terms for Motoboys -->
+        <section class="section">
+            <div class="container">
+                <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+                    <h2 class="section-title">Termos Legais para Motoboys</h2>
+                    <div class="card" style="margin-bottom: var(--space-24);">
+                        <div class="card__body">
+                            <p style="font-size: var(--font-size-lg); margin-bottom: var(--space-20);">Ao usar nossa ferramenta, você concorda com nossos termos</p>
+                            <div class="flex" style="justify-content: center; gap: var(--space-16); flex-wrap: wrap;">
+                                <a href="#" onclick="showPage('termos-motoboy')" class="btn btn--secondary">
+                                    📋 Termos de Uso
+                                </a>
+                                <a href="#" onclick="showPage('privacidade-motoboy')" class="btn btn--outline">
+                                    🔒 Política de Privacidade
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="cta-section">
+            <div class="container text-center">
+                <h2>Comece a usar agora mesmo!</h2>
+                <button class="btn btn--outline" onclick="showPage('motoboy')" style="border-color: white; color: white; margin-top: var(--space-24);">
+                    Acessar Sistema de Entrega
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <div class="logo" style="margin-bottom: var(--space-16);">
+                            <span style="font-size: 18px; font-weight: bold; color: #FF6B35;">Chegou Aí</span>
+                        </div>
+                        <p>Conectando motoboys e moradores via notificações automáticas no WhatsApp.<br>Rápido, simples e sem depender da portaria.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Links Úteis</h4>
+                        <p><a href="#" onclick="showPage('home')">Início</a></p>
+                        <p><a href="#" onclick="showPage('termos')">Termos de Uso</a></p>
+                        <p><a href="#" onclick="showPage('privacidade')">Política de Privacidade</a></p>
+                        <p><a href="https://wa.me/5542998456017" target="_blank">Suporte</a></p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contato</h4>
+                        <p><i class="fas fa-phone"></i> (42)99845-6017</p>
+                        <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/5542998456017" target="_blank">(42)99845-6017</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:chegouai.atendimento@gmail.com">chegouai.atendimento@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 Chegou Aí. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Termos de Uso Page -->
+    <div id="termos" class="page">
+        <div class="container" style="max-width: 900px; padding: 40px 20px;">
+            <div class="card">
+                <div class="card__body" style="padding: 40px;">
+                    <div class="text-center" style="margin-bottom: 3rem;">
+                        <h1>Termos de Uso - Chegou Aí</h1>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-lg);">Última atualização: 15 de outubro de 2025</p>
+                        <p style="color: var(--color-text-secondary); font-weight: var(--font-weight-medium);">Responsável: Chegou Aí Tecnologia LTDA</p>
+                    </div>
+
+                    <div style="margin-bottom: 2rem; padding: 24px; background: var(--color-bg-3); border-radius: var(--radius-lg);">
+                        <h2 style="color: var(--color-primary); margin-bottom: 1rem;">Bem-vindo ao Chegou Aí!</h2>
+                        <p style="font-size: var(--font-size-lg);">Ao usar nosso aplicativo, você concorda com estes Termos de Uso. Leia atentamente antes de se cadastrar e utilizar nossos serviços.</p>
+                    </div>
+
+                    <div class="terms-content">
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">1. O que é o Chegou Aí</h3>
+                            <p>O Chegou Aí é um aplicativo que facilita a comunicação entre motoboys e moradores de condomínios.</p>
+                            <p>Quando uma entrega chega, o motoboy escaneia um QR Code e o sistema envia automaticamente uma mensagem via WhatsApp para avisar que o pedido chegou.</p>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">2. Como funciona o serviço</h3>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li>O morador faz seu cadastro informando nome completo e número do WhatsApp.</li>
+                                <li>O sistema armazena essas informações de forma segura.</li>
+                                <li>Quando o motoboy registra a entrega, o morador recebe uma notificação automática no WhatsApp.</li>
+                                <li>O serviço tem um custo mensal de <strong>R$ 9,90</strong>, pago por meio de um sistema terceirizado de pagamentos operado pela <strong>CAKTO PAY LTDA (CNPJ 52.328.926/0001-04)</strong>.</li>
+                            </ul>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">3. Pagamentos e Reembolsos</h3>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li>Todos os pagamentos são processados com segurança pela CAKTO PAY LTDA.</li>
+                                <li>Em caso de cancelamento dentro de <strong>7 dias</strong> após o pagamento, o valor será reembolsado integralmente, conforme o direito de arrependimento previsto no Código de Defesa do Consumidor (Art. 49).</li>
+                                <li>Se o cancelamento ocorrer a partir do 8º dia, não haverá reembolso, mas o usuário poderá continuar usando o serviço até o final do período já pago.</li>
+                                <li>O plano não será renovado automaticamente após o cancelamento.</li>
+                            </ul>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">4. Responsabilidades do usuário</h3>
+                            <p>Ao utilizar o Chegou Aí, você se compromete a:</p>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li>Fornecer informações verdadeiras e atualizadas;</li>
+                                <li>Não utilizar o serviço de forma indevida;</li>
+                                <li>Manter seu número de WhatsApp ativo para receber notificações;</li>
+                                <li>Estar ciente de que o Chegou Aí não realiza entregas, apenas envia notificações automáticas.</li>
+                            </ul>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">5. Cancelamento do serviço</h3>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li>O cancelamento pode ser solicitado a qualquer momento pelo nosso canal de atendimento (WhatsApp ou e-mail).</li>
+                                <li>Após o cancelamento, o envio de notificações será encerrado ao final do período contratado.</li>
+                            </ul>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">6. Limites de responsabilidade</h3>
+                            <p>O Chegou Aí não se responsabiliza por:</p>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li>Atrasos, extravios ou erros de entrega;</li>
+                                <li>Problemas de conexão com a internet ou com o WhatsApp;</li>
+                                <li>Informações incorretas inseridas pelo motoboy.</li>
+                            </ul>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem; background: var(--color-bg-1); padding: 24px; border-radius: var(--radius-lg);">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">7. Suporte e contato</h3>
+                            <p>Dúvidas, cancelamentos ou solicitações podem ser feitas através do nosso canal oficial:</p>
+                            <div style="margin-top: 16px;">
+                                <p><strong>📞 WhatsApp:</strong> <a href="https://wa.me/5542998456017" target="_blank">(42)99845-6017</a></p>
+                                <p><strong>📧 E-mail:</strong> <a href="mailto:chegouai.atendimento@gmail.com">chegouai.atendimento@gmail.com</a></p>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="text-center" style="margin-top: 3rem;">
+                        <button class="btn btn--primary" onclick="showPage('home')">Voltar ao Início</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Termos de Uso Motoboy Page -->
+    <div id="termos-motoboy" class="page">
+        <div class="container" style="max-width: 900px; padding: 40px 20px;">
+            <div class="card">
+                <div class="card__body" style="padding: 40px;">
+                    <div class="text-center" style="margin-bottom: 3rem;">
+                        <h1>🛵 Termos de Uso - Motoboy</h1>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-lg);">Última atualização: 15 de outubro de 2025</p>
+                        <p style="color: var(--color-text-secondary); font-weight: var(--font-weight-medium);">Responsável: Chegou Aí Tecnologia LTDA</p>
+                    </div>
+
+                    <div style="margin-bottom: 2rem; padding: 24px; background: var(--color-bg-3); border-radius: var(--radius-lg);">
+                        <h2 style="color: var(--color-primary); margin-bottom: 1rem;">Bem-vindo ao Chegou Aí!</h2>
+                        <p style="font-size: var(--font-size-lg);">Este Termo explica as regras para você, Motoboy, utilizar a nossa plataforma para agilizar suas entregas.</p>
+                    </div>
+
+                    <div class="terms-content">
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">1. O que é o Chegou Aí para você?</h3>
+                            <p>O Chegou Aí é uma ferramenta gratuita que permite a você, motoboy, notificar o cliente automaticamente, via WhatsApp, assim que a entrega chega no condomínio.</p>
+                            <p>O objetivo é simples: acabar com a espera na portaria para que você ganhe tempo e entregue mais rápido.</p>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">2. Como funciona a ferramenta</h3>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li>Ao chegar no condomínio, você escaneia o QR Code do Chegou Aí.</li>
+                                <li>Você preenche um formulário simples com o Nome e Número do WhatsApp do cliente que fez o pedido.</li>
+                                <li>O sistema verifica se o cliente é assinante e, se for, envia a mensagem automática: "Seu pedido chegou! O entregador está aguardando na portaria."</li>
+                                <li>Você segue com a entrega e ganha tempo.</li>
+                            </ul>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">3. Obrigações do Motoboy</h3>
+                            <p>Ao usar o Chegou Aí, você se compromete a:</p>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li><strong>Usar a ferramenta corretamente:</strong> Utilizar o sistema apenas para notificar entregas em condomínios cadastrados.</li>
+                                <li><strong>Informar dados corretos:</strong> Inserir o nome e o número de WhatsApp exatos do cliente que fez o pedido. A inserção de dados falsos ou incorretos pode levar à suspensão do seu uso.</li>
+                                <li><strong>Não salvar dados:</strong> Não salvar ou armazenar os números de WhatsApp dos clientes que você usa na plataforma para qualquer outro fim.</li>
+                                <li><strong>Segurança e Responsabilidade:</strong> Estar ciente de que o Chegou Aí é apenas uma ferramenta de notificação e não se responsabiliza pela sua segurança, seu veículo ou por qualquer problema com a entrega em si.</li>
+                            </ul>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">4. Gratuito para o Motoboy</h3>
+                            <p style="font-size: var(--font-size-lg); font-weight: var(--font-weight-medium); color: var(--color-secondary);">O uso da ferramenta de notificação Chegou Aí é totalmente gratuito para os motoboys. Você não tem custo algum para usar o QR Code e enviar a notificação.</p>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">5. Inexistência de Vínculo</h3>
+                            <p>Você reconhece que o uso da ferramenta Chegou Aí não cria vínculo empregatício, societário, de representação ou similar entre você e a Chegou Aí Tecnologia LTDA.</p>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">6. Suspensão e Bloqueio</h3>
+                            <p>A Chegou Aí poderá suspender ou bloquear o acesso do motoboy que:</p>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li>Inserir informações falsas de forma recorrente.</li>
+                                <li>Utilizar a plataforma para fins diferentes do que foi criada.</li>
+                                <li>Violar qualquer regra deste Termo de Uso ou da Política de Privacidade.</li>
+                            </ul>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem; background: var(--color-bg-1); padding: 24px; border-radius: var(--radius-lg);">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">7. Contato e Suporte</h3>
+                            <p>Em caso de dúvidas sobre o funcionamento, entre em contato:</p>
+                            <div style="margin-top: 16px;">
+                                <p><strong>📞 WhatsApp:</strong> <a href="https://wa.me/5542998456017" target="_blank">(42)99845-6017</a></p>
+                                <p><strong>📧 E-mail:</strong> <a href="mailto:chegouai.atendimento@gmail.com">chegouai.atendimento@gmail.com</a></p>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="text-center" style="margin-top: 3rem;">
+                        <button class="btn btn--primary" onclick="showPage('motoboy')">Voltar ao Sistema</button>
+                        <button class="btn btn--outline" onclick="showPage('home')" style="margin-left: var(--space-16);">Início</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Política de Privacidade Motoboy Page -->
+    <div id="privacidade-motoboy" class="page">
+        <div class="container" style="max-width: 900px; padding: 40px 20px;">
+            <div class="card">
+                <div class="card__body" style="padding: 40px;">
+                    <div class="text-center" style="margin-bottom: 3rem;">
+                        <h1>🔒 Política de Privacidade - Motoboy</h1>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-lg);">Última atualização: 15 de outubro de 2025</p>
+                        <p style="color: var(--color-text-secondary); font-weight: var(--font-weight-medium);">Responsável: Chegou Aí Tecnologia LTDA</p>
+                    </div>
+
+                    <div style="margin-bottom: 2rem; padding: 24px; background: var(--color-bg-4); border-radius: var(--radius-lg);">
+                        <h2 style="color: var(--color-primary); margin-bottom: 1rem;">🔒 Sua privacidade e a dos clientes são nossa prioridade.</h2>
+                        <p style="font-size: var(--font-size-lg);">Esta Política explica como tratamos os dados que você insere no sistema, conforme a LGPD (Lei nº 13.709/2018).</p>
+                    </div>
+
+                    <div class="privacy-content">
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">1. Dados que coletamos (e para que servem)</h3>
+                            <p>Quando você usa o sistema de notificação via QR Code, nós coletamos e tratamos os seguintes dados:</p>
+                            
+                            <div style="overflow-x: auto; margin: 20px 0;">
+                                <table style="width: 100%; border-collapse: collapse; margin: 16px 0; border: 1px solid var(--color-border);">
+                                    <thead>
+                                        <tr style="background: var(--color-bg-2);">
+                                            <th style="padding: 12px; text-align: left; border: 1px solid var(--color-border); font-weight: var(--font-weight-bold);">Dado Coletado</th>
+                                            <th style="padding: 12px; text-align: left; border: 1px solid var(--color-border); font-weight: var(--font-weight-bold);">Finalidade</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding: 12px; border: 1px solid var(--color-border);"><strong>Nome do Cliente</strong></td>
+                                            <td style="padding: 12px; border: 1px solid var(--color-border);">Usado apenas para identificação no sistema e para personalizar a mensagem enviada.</td>
+                                        </tr>
+                                        <tr style="background: var(--color-bg-1);">
+                                            <td style="padding: 12px; border: 1px solid var(--color-border);"><strong>Número do WhatsApp do Cliente</strong></td>
+                                            <td style="padding: 12px; border: 1px solid var(--color-border);">Usado apenas para identificar se o cliente é assinante e enviar a notificação automática.</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 12px; border: 1px solid var(--color-border);"><strong>Seu IP e dados de acesso</strong></td>
+                                            <td style="padding: 12px; border: 1px solid var(--color-border);">Usado para controle de segurança e para evitar fraudes ou uso indevido da plataforma.</td>
+                                        </tr>
+                                        <tr style="background: var(--color-bg-1);">
+                                            <td style="padding: 12px; border: 1px solid var(--color-border);"><strong>Local de Escaneamento (Condomínio)</strong></td>
+                                            <td style="padding: 12px; border: 1px solid var(--color-border);">Usado para controle e verificação de qual condomínio o motoboy está usando a ferramenta.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">2. Como usamos os dados</h3>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li><strong>Finalidade:</strong> Os dados são usados exclusivamente para o envio da notificação automática ao cliente, conforme o propósito do aplicativo.</li>
+                                <li><strong>Segurança:</strong> Implementamos medidas de segurança para proteger todos os dados inseridos, evitando acessos indevidos.</li>
+                                <li><strong>Não Compartilhamento:</strong> Os números e nomes dos clientes não são compartilhados com você, motoboy, além do momento em que você os insere no formulário. A Chegou Aí não compartilha seus dados pessoais (seus dados de acesso, IP, etc.) com terceiros, exceto em caso de exigência legal.</li>
+                            </ul>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">3. Seus Dados Pessoais (Motoboy)</h3>
+                            <p style="font-weight: var(--font-weight-medium); color: var(--color-secondary);">Nós não pedimos seu nome, CPF ou número de celular para que você use o QR Code. Apenas seus dados de acesso (como IP) são registrados para garantir a segurança do sistema.</p>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">4. Duração do Armazenamento</h3>
+                            <p>Os dados dos clientes (nome e WhatsApp) que você insere são mantidos no nosso banco apenas pelo tempo necessário para cumprir a notificação e manter um registro histórico de segurança, sendo excluídos em um prazo seguro após a entrega.</p>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem; background: var(--color-bg-1); padding: 24px; border-radius: var(--radius-lg);">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">5. Contato sobre privacidade</h3>
+                            <p>Se tiver qualquer dúvida sobre o tratamento de dados ou esta Política, entre em contato:</p>
+                            <div style="margin-top: 16px;">
+                                <p><strong>📞 WhatsApp:</strong> <a href="https://wa.me/5542998456017" target="_blank">(42)99845-6017</a></p>
+                                <p><strong>📧 E-mail:</strong> <a href="mailto:chegouai.atendimento@gmail.com">chegouai.atendimento@gmail.com</a></p>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="text-center" style="margin-top: 3rem;">
+                        <button class="btn btn--primary" onclick="showPage('motoboy')">Voltar ao Sistema</button>
+                        <button class="btn btn--outline" onclick="showPage('home')" style="margin-left: var(--space-16);">Início</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Política de Privacidade Page -->
+    <div id="privacidade" class="page">
+        <div class="container" style="max-width: 900px; padding: 40px 20px;">
+            <div class="card">
+                <div class="card__body" style="padding: 40px;">
+                    <div class="text-center" style="margin-bottom: 3rem;">
+                        <h1>Política de Privacidade - Chegou Aí</h1>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-lg);">Última atualização: 15 de outubro de 2025</p>
+                        <p style="color: var(--color-text-secondary); font-weight: var(--font-weight-medium);">Responsável: Chegou Aí Tecnologia LTDA</p>
+                    </div>
+
+                    <div style="margin-bottom: 2rem; padding: 24px; background: var(--color-bg-4); border-radius: var(--radius-lg);">
+                        <h2 style="color: var(--color-primary); margin-bottom: 1rem;">🔒 Sua privacidade é nossa prioridade.</h2>
+                        <p style="font-size: var(--font-size-lg);">Esta Política explica de forma clara como tratamos seus dados pessoais conforme a Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018).</p>
+                    </div>
+
+                    <div class="privacy-content">
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">1. Dados que coletamos</h3>
+                            <p>Coletamos apenas as informações necessárias para o funcionamento do aplicativo:</p>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li><strong>Nome completo</strong></li>
+                                <li><strong>Número do WhatsApp</strong></li>
+                                <li><strong>Condomínio ou endereço</strong> (opcional)</li>
+                            </ul>
+                            <p style="margin-top: 16px;">Esses dados são usados exclusivamente para identificar o morador e enviar notificações de entrega.</p>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">2. Uso dos dados</h3>
+                            <p>Os dados coletados são utilizados para:</p>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li>Enviar mensagens automáticas no WhatsApp informando a chegada do pedido;</li>
+                                <li>Controlar assinaturas e pagamentos;</li>
+                                <li>Fornecer suporte e atendimento ao cliente.</li>
+                            </ul>
+                            <p style="margin-top: 16px; font-weight: var(--font-weight-medium);">Não vendemos, trocamos nem compartilhamos seus dados com terceiros sem sua autorização.</p>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">3. Pagamentos e informações financeiras</h3>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li>Os pagamentos são processados pela <strong>CAKTO PAY LTDA (CNPJ 52.328.926/0001-04)</strong>, empresa parceira que realiza a cobrança e gestão de assinaturas.</li>
+                                <li><strong>O Chegou Aí não armazena informações financeiras</strong>, como números de cartão ou dados bancários.</li>
+                                <li>Toda a transação é feita com segurança e responsabilidade pela CAKTO PAY.</li>
+                            </ul>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">4. Armazenamento e segurança</h3>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li>Seus dados ficam guardados em servidores seguros, com acesso restrito e criptografado.</li>
+                                <li>Aplicamos medidas técnicas e administrativas para proteger suas informações contra acessos indevidos.</li>
+                            </ul>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">5. Tempo de retenção</h3>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li>Os dados são mantidos enquanto o usuário tiver um plano ativo.</li>
+                                <li>Após o cancelamento, os dados são excluídos definitivamente em até <strong>30 dias</strong>.</li>
+                            </ul>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem; background: var(--color-bg-3); padding: 24px; border-radius: var(--radius-lg);">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">6. Direitos do usuário</h3>
+                            <p style="font-weight: var(--font-weight-medium);">Você pode, a qualquer momento:</p>
+                            <ul style="margin-left: 20px; line-height: 1.8; margin-top: 12px;">
+                                <li>Solicitar acesso aos seus dados;</li>
+                                <li>Corrigir informações incorretas;</li>
+                                <li>Solicitar a exclusão de seus dados;</li>
+                                <li>Revogar o consentimento para uso.</li>
+                            </ul>
+                            <p style="margin-top: 16px;">Para isso, basta entrar em contato pelo nosso WhatsApp ou e-mail.</p>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">7. Compartilhamento de dados</h3>
+                            <p>Seus dados só serão compartilhados com a <strong>CAKTO PAY LTDA</strong> (para fins de cobrança) e autoridades públicas quando houver exigência legal.</p>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">8. Alterações nesta Política</h3>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li>Esta Política pode ser atualizada de tempos em tempos.</li>
+                                <li>Sempre que isso ocorrer, os usuários serão avisados por mensagem ou aviso no site.</li>
+                            </ul>
+                        </section>
+
+                        <section style="margin-bottom: 2.5rem; background: var(--color-bg-1); padding: 24px; border-radius: var(--radius-lg);">
+                            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">9. Contato sobre privacidade</h3>
+                            <div style="margin-top: 16px;">
+                                <p><strong>📞 WhatsApp:</strong> <a href="https://wa.me/5542998456017" target="_blank">(42)99845-6017</a></p>
+                                <p><strong>📧 E-mail:</strong> <a href="mailto:chegouai.atendimento@gmail.com">chegouai.atendimento@gmail.com</a></p>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="text-center" style="margin-top: 3rem;">
+                        <button class="btn btn--primary" onclick="showPage('home')">Voltar ao Início</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Consent Modal -->
+    <div id="consentModal" class="modal-overlay">
+        <div class="consent-modal">
+            <div class="consent-modal-header">
+                <h2 class="consent-modal-title">Consentimento e Termos</h2>
+            </div>
+            <div class="consent-modal-body">
+                <div class="consent-text">
+                    Eu li e concordo com os <a href="/termos" onclick="openTermsFromModal('termos'); return false;" target="_blank" rel="noopener noreferrer" class="modal-link" title="Abrir Termos de Uso em nova aba">Termos de Uso</a> e a <a href="/privacidade" onclick="openTermsFromModal('privacidade'); return false;" target="_blank" rel="noopener noreferrer" class="modal-link" title="Abrir Política de Privacidade em nova aba">Política de Privacidade</a> do Chegou Aí. Declaro que autorizo a Chegou Aí Tecnologia LTDA a coletar e usar meu nome e número de WhatsApp, conforme descrito na Política de Privacidade, para a finalidade exclusiva de me enviar notificações automáticas da chegada de meus pedidos.
+                </div>
+                <div class="consent-checkbox-container">
+                    <input type="checkbox" id="consentCheckbox" class="consent-checkbox">
+                    <label for="consentCheckbox" class="consent-checkbox-label">☐ Eu concordo com os termos acima</label>
+                </div>
+            </div>
+            <div class="consent-modal-footer">
+                <button class="consent-btn consent-btn--cancel" onclick="closeConsentModal()">
+                    Cancelar
+                </button>
+                <button class="consent-btn consent-btn--confirm" id="confirmConsentBtn" onclick="confirmConsent()" disabled>
+                    Concordo - Ir para Pagamento
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Database simulation
+        const clients = [
+            { nome: 'João Silva', telefone: '(41)99856-4321', ativo: true },
+            { nome: 'Maria Santos', telefone: '(42)98765-1234', ativo: true },
+            { nome: 'Pedro Costa', telefone: '(43)99123-4567', ativo: false },
+            { nome: 'Ana Oliveira', telefone: '(44)98888-9999', ativo: true },
+            { nome: 'Carlos Mendes', telefone: '(45)97777-8888', ativo: true }
+        ];
+
+        const registeredUsers = [];
+        let isAdminLoggedIn = false;
+
+        // Phone mask function
+        function applyPhoneMask(input) {
+            let value = input.value.replace(/\D/g, '');
+            
+            if (input.id === 'registroTelefone') {
+                // Format: (DD)9 98319895
+                if (value.length <= 2) {
+                    value = value.replace(/(\d{0,2})/, '($1');
+                } else if (value.length <= 3) {
+                    value = value.replace(/(\d{2})(\d{0,1})/, '($1)$2');
+                } else if (value.length <= 8) {
+                    value = value.replace(/(\d{2})(\d{1})(\d{0,4})/, '($1)$2 $3');
+                } else {
+                    value = value.replace(/(\d{2})(\d{1})(\d{4})(\d{0,4})/, '($1)$2 $3$4');
+                }
+            } else {
+                // Format: (DD)998319895
+                if (value.length <= 2) {
+                    value = value.replace(/(\d{0,2})/, '($1');
+                } else if (value.length <= 11) {
+                    value = value.replace(/(\d{2})(\d{0,9})/, '($1)$2');
+                }
+            }
+            
+            input.value = value;
+        }
+
+        // Add event listeners for phone masks
+        document.addEventListener('DOMContentLoaded', function() {
+            const phoneInputs = ['clientPhone', 'registroTelefone'];
+            phoneInputs.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.addEventListener('input', function() {
+                        applyPhoneMask(this);
+                    });
+                }
+            });
+        });
+
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Update page title based on current page
+            let pageTitle = 'Chegou Aí - Notificações Automáticas para Entregas';
+            switch(pageId) {
+                case 'termos':
+                    pageTitle = 'Termos de Uso - Chegou Aí';
+                    break;
+                case 'privacidade':
+                    pageTitle = 'Política de Privacidade - Chegou Aí';
+                    break;
+                case 'termos-motoboy':
+                    pageTitle = 'Termos de Uso para Motoboys - Chegou Aí';
+                    break;
+                case 'privacidade-motoboy':
+                    pageTitle = 'Política de Privacidade para Motoboys - Chegou Aí';
+                    break;
+                case 'moradores':
+                    pageTitle = 'Para Moradores - Chegou Aí';
+                    break;
+                case 'motoboys-info':
+                    pageTitle = 'Para Motoboys - Chegou Aí';
+                    break;
+                case 'motoboy':
+                    pageTitle = 'Portal do Motoboy - Chegou Aí';
+                    break;
+                case 'admin':
+                    pageTitle = 'Área Administrativa - Chegou Aí';
+                    break;
+                case 'registro':
+                    pageTitle = 'Cadastro - Chegou Aí';
+                    break;
+            }
+            document.title = pageTitle;
+
+            // Reset admin login state if leaving admin page
+            if (pageId !== 'admin' && isAdminLoggedIn) {
+                logout();
+            }
+
+            // Scroll to top when changing pages
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Motoboy form handler
+        document.getElementById('motoboyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const clientName = document.getElementById('clientName').value.trim();
+            const clientPhone = document.getElementById('clientPhone').value.trim();
+            const messageDiv = document.getElementById('motoboyMessage');
+            
+            if (!clientName || !clientPhone) {
+                showMessage('motoboyMessage', 'Por favor, preencha todos os campos.', 'error');
+                return;
+            }
+            
+            // Show loading message
+            showMessage('motoboyMessage', '<div class="loading-spinner"></div>Procurando registro do cliente no banco de dados...', 'loading');
+            
+            // Simulate database search
+            setTimeout(() => {
+                const client = clients.find(c => 
+                    c.nome.toLowerCase().includes(clientName.toLowerCase()) || 
+                    c.telefone.replace(/\D/g, '').includes(clientPhone.replace(/\D/g, ''))
+                );
+                
+                if (client && client.ativo) {
+                    showMessage('motoboyMessage', '✅ Enviado o aviso para o cliente!', 'success');
+                    // Reset form
+                    document.getElementById('motoboyForm').reset();
+                } else {
+                    showMessage('motoboyMessage', '😢 Infelizmente esse cliente não tem o plano do Chegou AÍ', 'error');
+                }
+            }, 2500);
+        });
+
+        // Consent Modal Functions
+        function showConsentModal() {
+            const modal = document.getElementById('consentModal');
+            const checkbox = document.getElementById('consentCheckbox');
+            const confirmBtn = document.getElementById('confirmConsentBtn');
+            
+            // Reset modal state
+            checkbox.checked = false;
+            confirmBtn.disabled = true;
+            
+            // Show modal
+            modal.classList.add('active');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeConsentModal() {
+            const modal = document.getElementById('consentModal');
+            modal.classList.remove('active');
+            
+            // Restore body scroll
+            document.body.style.overflow = '';
+        }
+
+        function confirmConsent() {
+            const checkbox = document.getElementById('consentCheckbox');
+            if (checkbox.checked) {
+                // Close modal
+                closeConsentModal();
+                
+                // Redirect to payment
+                setTimeout(() => {
+                    window.open('https://pay.cakto.com.br/3eikrw7_608496', '_blank', 'noopener noreferrer');
+                }, 300);
+            }
+        }
+
+        function openTermsInNewTab(page) {
+            // Create a temporary link to open the terms page
+            const baseUrl = window.location.origin + window.location.pathname;
+            const fullUrl = baseUrl + '#' + page.substring(1); // Remove leading slash
+            window.open(fullUrl, '_blank', 'noopener noreferrer');
+        }
+
+        // Handle modal link clicks
+        // Enhanced function to handle modal link clicks
+        function handleModalLinkClick(event, page) {
+            event.preventDefault();
+            event.stopPropagation();
+            openTermsFromModal(page);
+        }
+        
+        // Debug function to test links
+        function debugLinkTest() {
+            console.log('Testando links do modal...');
+            console.log('Página termos existe:', !!document.getElementById('termos'));
+            console.log('Página privacidade existe:', !!document.getElementById('privacidade'));
+        }
+
+        // Payment redirect (now shows consent modal)
+        function redirectToPayment() {
+            showConsentModal();
+        }
+
+        // Registration form handler
+        document.getElementById('registroForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nome = document.getElementById('registroNome').value.trim();
+            const telefone = document.getElementById('registroTelefone').value.trim();
+            
+            if (!nome || !telefone) {
+                showMessage('registroMessage', 'Por favor, preencha todos os campos.', 'error');
+                return;
+            }
+            
+            // Add to registered users
+            registeredUsers.push({ nome, telefone, ativo: true });
+            clients.push({ nome, telefone, ativo: true });
+            
+            // Show confirmation section
+            document.getElementById('welcomeSection').classList.add('hidden');
+            document.getElementById('confirmationSection').classList.remove('hidden');
+            document.getElementById('confirmedPhone').textContent = telefone;
+        });
+
+        // Confirmation buttons
+        document.getElementById('receivedBtn').addEventListener('click', function() {
+            showMessage('registroMessage', '🎉 Cadastro ativado com sucesso! Bem-vindo ao Chegou Aí!', 'success');
+            
+            setTimeout(() => {
+                showPage('home');
+                // Reset registration page
+                document.getElementById('registroForm').reset();
+                document.getElementById('welcomeSection').classList.remove('hidden');
+                document.getElementById('confirmationSection').classList.add('hidden');
+                document.getElementById('registroMessage').classList.add('hidden');
+            }, 2000);
+        });
+
+        document.getElementById('notReceivedBtn').addEventListener('click', function() {
+            showMessage('registroMessage', '⚠️ Verifique se o número está correto e tente novamente.', 'warning');
+            
+            // Show registration form again
+            document.getElementById('welcomeSection').classList.remove('hidden');
+            document.getElementById('confirmationSection').classList.add('hidden');
+        });
+
+        // Admin login handler
+        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('adminUser').value.trim();
+            const password = document.getElementById('adminPassword').value.trim();
+            
+            if (username === 'CHEGOAIADM' && password === 'CHEGOAIDIEGO') {
+                isAdminLoggedIn = true;
+                document.getElementById('adminLogin').classList.add('hidden');
+                document.getElementById('adminDashboard').classList.remove('hidden');
+                updateDashboard();
+            } else {
+                showMessage('adminMessage', '❌ Usuário ou senha incorretos.', 'error');
+            }
+        });
+
+        // Logout function
+        function logout() {
+            isAdminLoggedIn = false;
+            document.getElementById('adminLogin').classList.remove('hidden');
+            document.getElementById('adminDashboard').classList.add('hidden');
+            document.getElementById('adminLoginForm').reset();
+            document.getElementById('adminMessage').classList.add('hidden');
+        }
+
+        // Update dashboard stats
+        function updateDashboard() {
+            const totalClients = clients.length;
+            const totalMessages = Math.floor(Math.random() * 1000) + 1500;
+            const totalRevenue = (clients.filter(c => c.ativo).length * 9.90).toFixed(2);
+            const activePlans = clients.filter(c => c.ativo).length;
+            
+            document.getElementById('totalClients').textContent = totalClients;
+            document.getElementById('totalMessages').textContent = totalMessages.toLocaleString();
+            document.getElementById('totalRevenue').textContent = `R$ ${totalRevenue.replace('.', ',')}`;
+            document.getElementById('activePlans').textContent = activePlans;
+        }
+
+        // Show message helper function
+        function showMessage(elementId, message, type) {
+            const messageDiv = document.getElementById(elementId);
+            messageDiv.className = `message message--${type}`;
+            messageDiv.innerHTML = message;
+            messageDiv.classList.remove('hidden');
+            
+            // Auto-hide success messages after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    messageDiv.classList.add('hidden');
+                }, 5000);
+            }
+        }
+
+        // FAQ Toggle Function
+        function toggleFaq(questionElement) {
+            const faqItem = questionElement.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = questionElement.querySelector('.faq-icon');
+            const isActive = questionElement.classList.contains('active');
+            
+            // Close all other FAQ items in the same container
+            const faqContainer = faqItem.closest('.faq-container');
+            const allFaqQuestions = faqContainer.querySelectorAll('.faq-question');
+            const allFaqAnswers = faqContainer.querySelectorAll('.faq-answer');
+            const allFaqIcons = faqContainer.querySelectorAll('.faq-icon');
+            
+            // Close all items
+            allFaqQuestions.forEach(q => q.classList.remove('active'));
+            allFaqAnswers.forEach(a => a.classList.remove('active'));
+            allFaqIcons.forEach(i => i.textContent = '+');
+            
+            // If this item wasn't active, open it
+            if (!isActive) {
+                questionElement.classList.add('active');
+                answer.classList.add('active');
+                icon.textContent = '×';
+            }
+        }
+
+        // Mobile menu functions
+        function toggleMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            
+            mobileMenuBtn.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+        }
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show home page by default
+            showPage('home');
+            
+            // Setup mobile menu event listeners
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            }
+            
+            if (mobileMenuOverlay) {
+                mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+            }
+            
+            // Close menu on window resize if desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    closeMobileMenu();
+                }
+            });
+            
+            // Setup consent modal event listeners
+            const consentCheckbox = document.getElementById('consentCheckbox');
+            const confirmConsentBtn = document.getElementById('confirmConsentBtn');
+            const consentModalOverlay = document.getElementById('consentModal');
+            
+            // Function to open terms/privacy pages from modal
+            window.openTermsFromModal = function(page) {
+                try {
+                    // Get current page content to copy to new window
+                    const pageElement = document.getElementById(page);
+                    if (!pageElement) {
+                        console.error('Página não encontrada:', page);
+                        return;
+                    }
+                    
+                    // Create new window
+                    const newWindow = window.open('', '_blank', 'noopener,noreferrer,width=1200,height=800,scrollbars=yes,resizable=yes,location=yes');
+                    
+                    if (!newWindow) {
+                        // Fallback: try to open in same tab if popup blocked
+                        alert('Pop-ups bloqueados. Os termos serão abertos na mesma aba.');
+                        const currentUrl = window.location.href;
+                        window.location.href = '#' + page;
+                        return;
+                    }
+                    
+                    // Write complete HTML to new window
+                    const htmlContent = `
+                        <!DOCTYPE html>
+                        <html lang="pt-BR">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>${page === 'termos' ? 'Termos de Uso - Moradores' : 'Política de Privacidade - Moradores'} - Chegou Aí</title>
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+                            <style>
+                                ${document.querySelector('style').textContent}
+                                body { margin: 0; padding: 0; }
+                                .page { display: block !important; }
+                                .navbar { display: none; }
+                            </style>
+                        </head>
+                        <body>
+                            ${pageElement.outerHTML}
+                        </body>
+                        </html>
+                    `;
+                    
+                    newWindow.document.open();
+                    newWindow.document.write(htmlContent);
+                    newWindow.document.close();
+                    
+                    // Focus the new window
+                    newWindow.focus();
+                    
+                } catch (error) {
+                    console.error('Erro ao abrir página:', error);
+                    // Fallback para navegar na mesma janela
+                    window.open(window.location.origin + window.location.pathname + '#' + page, '_blank');
+                }
+            };
+            
+            // Checkbox state change
+            if (consentCheckbox && confirmConsentBtn) {
+                consentCheckbox.addEventListener('change', function() {
+                    confirmConsentBtn.disabled = !this.checked;
+                    
+                    // Update visual checkbox label
+                    const label = document.querySelector('.consent-checkbox-label');
+                    if (label) {
+                        label.textContent = this.checked ? '☑ Eu concordo com os termos acima' : '☐ Eu concordo com os termos acima';
+                    }
+                });
+            }
+            
+            // Close modal with ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && consentModalOverlay.classList.contains('active')) {
+                    closeConsentModal();
+                }
+            });
+            
+            // Close modal by clicking overlay
+            if (consentModalOverlay) {
+                consentModalOverlay.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeConsentModal();
+                    }
+                });
+            }
+            
+            // Test modal links functionality
+            debugLinkTest();
+            
+            // Add click listeners to modal links for extra security
+            const modalLinks = document.querySelectorAll('.modal-link');
+            modalLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const onclick = this.getAttribute('onclick');
+                    if (onclick) {
+                        // Extract page name from onclick attribute
+                        const match = onclick.match(/openTermsFromModal\('([^']+)'\)/);
+                        if (match) {
+                            openTermsFromModal(match[1]);
+                        }
+                    }
+                });
+            });
+            
+            // Initialize FAQ functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                // Add keyboard support for FAQ
+                question.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleFaq(this);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
