@@ -602,20 +602,21 @@
 
         .hero {
           background: linear-gradient(135deg, var(--color-gray-light) 0%, #fff 100%);
-          padding: 80px 0;
+          padding: 60px 0 20px 0;
           text-align: center;
+          margin-bottom: 20px;
         }
 
         .hero h1 {
           font-size: 3rem;
-          margin-bottom: var(--space-24);
+          margin-bottom: var(--space-16);
           color: var(--color-gray-dark);
         }
 
         .hero p {
           font-size: var(--font-size-xl);
           color: var(--color-text-secondary);
-          margin-bottom: 2rem;
+          margin-bottom: 20px;
           max-width: 600px;
           margin-left: auto;
           margin-right: auto;
@@ -971,13 +972,13 @@
         }
 
         .consent-btn--cancel {
-          background: var(--color-secondary);
-          color: var(--color-text);
-          border: 1px solid var(--color-border);
+          background: #6B7280;
+          color: white;
+          border: none;
         }
 
         .consent-btn--cancel:hover {
-          background: var(--color-secondary-hover);
+          background: #4B5563;
         }
 
         .consent-btn--confirm {
@@ -1127,6 +1128,232 @@
           padding: var(--space-20) var(--space-24);
         }
 
+        /* Audience Section Styles */
+        .audience-section {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          margin: 40px 0;
+          max-width: 800px;
+          margin: 40px auto;
+        }
+
+        .morador-card,
+        .motoboy-card {
+          width: 100%;
+          background: var(--color-surface);
+          padding: var(--space-32);
+          border-radius: var(--radius-lg);
+          box-shadow: var(--shadow-md);
+          text-align: center;
+          transition: transform var(--duration-normal) var(--ease-standard),
+                      box-shadow var(--duration-normal) var(--ease-standard);
+          position: relative;
+        }
+
+        .morador-card {
+          background: #FFF4E6;
+          border-left: 5px solid #FF6B35;
+        }
+
+        .motoboy-card {
+          background: #E8F5E8;
+          border-left: 5px solid #3BC36B;
+        }
+
+        .morador-card:hover,
+        .motoboy-card:hover {
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-lg);
+        }
+
+        .audience-icon {
+          font-size: 3rem;
+          margin-bottom: var(--space-16);
+        }
+
+        .morador-card h2,
+        .motoboy-card h2 {
+          font-size: var(--font-size-2xl);
+          font-weight: var(--font-weight-bold);
+          margin-bottom: var(--space-12);
+          color: var(--color-text);
+        }
+
+        .morador-card h3 {
+          color: #FF6B35;
+          font-size: var(--font-size-lg);
+          font-weight: var(--font-weight-semibold);
+          margin-bottom: var(--space-16);
+        }
+
+        .motoboy-card h3 {
+          color: #3BC36B;
+          font-size: var(--font-size-lg);
+          font-weight: var(--font-weight-semibold);
+          margin-bottom: var(--space-16);
+        }
+
+        .benefits-list {
+          list-style: none;
+          padding: 0;
+          margin: var(--space-20) 0;
+          text-align: left;
+        }
+
+        .benefits-list li {
+          display: flex;
+          align-items: center;
+          margin-bottom: var(--space-12);
+          font-size: var(--font-size-base);
+          font-weight: var(--font-weight-medium);
+        }
+
+        .benefits-list i {
+          margin-right: var(--space-12);
+          width: 16px;
+          color: var(--color-primary);
+        }
+
+        .motoboy-card .benefits-list i {
+          color: #3BC36B;
+        }
+
+
+
+        /* Timeline Styles */
+        .timeline {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          position: relative;
+          margin: 40px 0;
+          padding: 20px 0;
+        }
+
+        .timeline::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(to right, #FF6B35, #3BC36B);
+          z-index: 1;
+        }
+
+        .timeline-step {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          position: relative;
+          z-index: 2;
+          background: var(--color-background);
+          padding: 10px;
+          text-align: center;
+        }
+
+        .step-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .step-circle {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.5rem;
+          color: white;
+          margin-bottom: 15px;
+        }
+
+        .step-1 .step-circle { background: #FF6B35; }
+        .step-2 .step-circle { background: #FF8C42; }
+        .step-3 .step-circle { background: #FFAD52; }
+        .step-4 .step-circle { background: #3BC36B; }
+
+        .step-title {
+          font-weight: bold;
+          margin-bottom: 8px;
+          text-align: center;
+          font-size: var(--font-size-base);
+        }
+
+        .step-description {
+          font-size: 0.9rem;
+          color: var(--color-text-secondary);
+          text-align: center;
+          max-width: 200px;
+        }
+
+        @media (max-width: 768px) {
+          .timeline {
+            flex-direction: column;
+            gap: 30px;
+            align-items: stretch;
+          }
+          
+          .timeline::before {
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            right: auto;
+            width: 3px;
+            height: auto;
+            background: linear-gradient(to bottom, #FF6B35, #3BC36B);
+            transform: translateX(-50%);
+          }
+          
+          .timeline-step {
+            align-items: flex-start;
+            flex-direction: row;
+            text-align: left;
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            padding: var(--space-20);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-card-border);
+          }
+          
+          .step-circle {
+            margin-right: var(--space-16);
+            margin-bottom: 0;
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+          }
+          
+          .step-content {
+            flex: 1;
+            align-items: flex-start;
+          }
+          
+          .step-title {
+            text-align: left;
+            margin-bottom: var(--space-8);
+            font-size: var(--font-size-lg);
+          }
+          
+          .step-description {
+            text-align: left;
+            max-width: none;
+            font-size: var(--font-size-sm);
+          }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+          .morador-card,
+          .motoboy-card {
+            padding: var(--space-24);
+          }
+        }
+
         /* Mobile responsiveness */
         @media (max-width: 768px) {
           .hero h1 {
@@ -1166,6 +1393,216 @@
             padding-left: 12px;
             border-left-width: 3px;
           }
+
+          /* Payment Modal Styles */
+        .payment-modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0,0,0,0.8);
+          z-index: 10000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity var(--duration-normal) var(--ease-standard),
+                      visibility var(--duration-normal) var(--ease-standard);
+        }
+
+        .payment-modal.active {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .payment-modal-content {
+          width: 90%;
+          height: 90%;
+          background: white;
+          border-radius: 10px;
+          position: relative;
+          overflow: hidden;
+          transform: scale(0.7) translateY(50px);
+          transition: transform var(--duration-normal) var(--ease-standard);
+        }
+
+        .payment-modal.active .payment-modal-content {
+          transform: scale(1) translateY(0);
+        }
+
+        .payment-iframe {
+          width: 100%;
+          height: 100%;
+          border: none;
+          border-radius: 10px;
+        }
+
+        .payment-close-btn {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          background: rgba(0,0,0,0.7);
+          color: white;
+          border: none;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 18px;
+          z-index: 10001;
+          transition: background var(--duration-fast);
+        }
+
+        .payment-close-btn:hover {
+          background: rgba(0,0,0,0.9);
+        }
+
+        .payment-loading {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          z-index: 10000;
+        }
+
+        .payment-loading-spinner {
+          display: inline-block;
+          width: 50px;
+          height: 50px;
+          border: 5px solid #f3f3f3;
+          border-radius: 50%;
+          border-top-color: var(--color-primary);
+          animation: spin 1s ease-in-out infinite;
+          margin-bottom: var(--space-16);
+        }
+
+        .payment-simulation {
+          position: absolute;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 10001;
+          display: flex;
+          gap: var(--space-12);
+        }
+
+        .simulate-btn {
+          background: var(--color-secondary);
+          color: white;
+          border: none;
+          padding: var(--space-8) var(--space-16);
+          border-radius: var(--radius-base);
+          cursor: pointer;
+          font-size: var(--font-size-sm);
+          transition: all var(--duration-fast);
+        }
+
+        .simulate-btn:hover {
+          background: #2E9B59;
+          transform: translateY(-1px);
+        }
+
+        /* Post Payment Registration Styles */
+        .post-payment-registration {
+          display: none;
+          background: var(--color-surface);
+          border-radius: var(--radius-lg);
+          box-shadow: var(--shadow-lg);
+          max-width: 600px;
+          width: 90%;
+          max-height: 90vh;
+          overflow-y: auto;
+          transform: scale(0.7) translateY(50px);
+          transition: transform var(--duration-normal) var(--ease-standard);
+          margin: var(--space-20);
+        }
+
+        .post-payment-registration.active {
+          transform: scale(1) translateY(0);
+        }
+
+        .post-payment-header {
+          padding: var(--space-24) var(--space-24) var(--space-16) var(--space-24);
+          border-bottom: 1px solid var(--color-card-border);
+          text-align: center;
+        }
+
+        .post-payment-title {
+          font-size: var(--font-size-2xl);
+          font-weight: var(--font-weight-bold);
+          color: var(--color-text);
+          margin: 0 0 var(--space-8) 0;
+        }
+
+        .post-payment-body {
+          padding: var(--space-24);
+        }
+
+        .success-message {
+          background: var(--color-bg-3);
+          border: 2px solid var(--color-secondary);
+          border-radius: var(--radius-base);
+          padding: var(--space-20);
+          margin-bottom: var(--space-24);
+          text-align: center;
+        }
+
+        .success-message h3 {
+          color: var(--color-secondary);
+          margin-bottom: var(--space-12);
+        }
+
+        .whatsapp-verification {
+          text-align: center;
+          margin-top: var(--space-24);
+        }
+
+        .verification-buttons {
+          display: flex;
+          gap: var(--space-12);
+          justify-content: center;
+          flex-wrap: wrap;
+          margin-top: var(--space-16);
+        }
+
+        .verification-btn {
+          padding: var(--space-12) var(--space-24);
+          border-radius: var(--radius-base);
+          font-size: var(--font-size-base);
+          font-weight: var(--font-weight-medium);
+          cursor: pointer;
+          transition: all var(--duration-normal) var(--ease-standard);
+          border: none;
+          min-width: 180px;
+        }
+
+        .verification-btn--received {
+          background: var(--color-secondary);
+          color: white;
+        }
+
+        .verification-btn--received:hover {
+          background: #2E9B59;
+          transform: translateY(-2px);
+        }
+
+        .verification-btn--not-received {
+          background: transparent;
+          color: var(--color-text);
+          border: 2px solid var(--color-border);
+        }
+
+        .verification-btn--not-received:hover {
+          background: var(--color-secondary);
+          color: white;
+          transform: translateY(-2px);
+        }
 
           /* Consent Modal Mobile */
           .consent-modal {
@@ -1219,12 +1656,255 @@
           .faq-answer.active {
             padding: var(--space-16) var(--space-20);
           }
+
+          /* Payment Modal Mobile */
+          .payment-modal-content {
+            width: 95%;
+            height: 95%;
+          }
+
+          .payment-close-btn {
+            top: 10px;
+            right: 10px;
+            width: 35px;
+            height: 35px;
+            font-size: 16px;
+          }
+
+          .payment-simulation {
+            bottom: 15px;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .simulate-btn {
+            width: 200px;
+          }
+
+          /* Post Payment Registration Mobile */
+          .post-payment-registration {
+            width: 95%;
+            margin: var(--space-16);
+          }
+
+          .post-payment-header,
+          .post-payment-body {
+            padding: var(--space-20);
+          }
+
+          .verification-buttons {
+            flex-direction: column;
+          }
+
+          .verification-btn {
+            width: 100%;
+            min-width: auto;
+          }
+          
+          /* Restricted Page Header Mobile */
+          .restricted-page-header {
+            padding: var(--space-16);
+          }
+          
+          .timeline-steps {
+            grid-template-columns: 1fr 1fr !important;
+            gap: var(--space-12) !important;
+          }
+          
+          .timeline-steps .step {
+            margin-bottom: var(--space-16);
+          }
+        }
+
+        /* Pricing Card Styles */
+        .pricing-section {
+          padding: 80px 0;
+          background: linear-gradient(135deg, var(--color-bg-2) 0%, var(--color-bg-1) 100%);
+        }
+
+        .pricing-card {
+          max-width: 380px;
+          margin: 0 auto;
+          background: var(--color-white);
+          border-radius: 20px;
+          padding: 40px 32px;
+          box-shadow: 0 20px 60px rgba(255, 107, 53, 0.15);
+          border: 3px solid var(--color-orange-primary);
+          text-align: center;
+          position: relative;
+          transition: transform var(--duration-normal) var(--ease-standard),
+                      box-shadow var(--duration-normal) var(--ease-standard);
+        }
+
+        .pricing-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 30px 80px rgba(255, 107, 53, 0.25);
+        }
+
+        .pricing-card::before {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          background: linear-gradient(135deg, var(--color-orange-primary), var(--color-secondary));
+          border-radius: 22px;
+          z-index: -1;
+          opacity: 0.1;
+        }
+
+        .pricing-header {
+          margin-bottom: 32px;
+        }
+
+        .pricing-title {
+          font-size: var(--font-size-3xl);
+          font-weight: var(--font-weight-bold);
+          color: var(--color-orange-primary);
+          margin-bottom: var(--space-8);
+          letter-spacing: var(--letter-spacing-tight);
+        }
+
+        .pricing-subtitle {
+          font-size: var(--font-size-lg);
+          color: var(--color-text-secondary);
+          font-weight: var(--font-weight-medium);
+          line-height: var(--line-height-normal);
+        }
+
+        .pricing-features {
+          margin: 32px 0;
+          text-align: left;
+        }
+
+        .pricing-features ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .pricing-features li {
+          display: flex;
+          align-items: center;
+          margin-bottom: var(--space-16);
+          font-size: var(--font-size-lg);
+          font-weight: var(--font-weight-medium);
+          color: var(--color-text);
+        }
+
+        .pricing-features .check-icon {
+          width: 24px;
+          height: 24px;
+          background: var(--color-secondary);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: var(--space-16);
+          color: var(--color-white);
+          font-size: 14px;
+          font-weight: var(--font-weight-bold);
+          flex-shrink: 0;
+        }
+
+        .price-display {
+          margin: 32px 0;
+        }
+
+        .price-amount {
+          font-size: 3.5rem;
+          font-weight: var(--font-weight-bold);
+          color: var(--color-orange-primary);
+          line-height: 1;
+          margin-bottom: var(--space-8);
+        }
+
+        .price-period {
+          font-size: var(--font-size-xl);
+          color: var(--color-text-secondary);
+          font-weight: var(--font-weight-medium);
+        }
+
+        .cta-button {
+          background: linear-gradient(135deg, var(--color-orange-primary), var(--color-orange-hover));
+          color: var(--color-white);
+          padding: 18px 32px;
+          border-radius: 12px;
+          border: none;
+          font-weight: var(--font-weight-bold);
+          font-size: var(--font-size-lg);
+          width: 100%;
+          cursor: pointer;
+          transition: all var(--duration-normal) var(--ease-standard);
+          box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+          margin-bottom: var(--space-20);
+        }
+
+        .cta-button:hover {
+          background: linear-gradient(135deg, var(--color-orange-hover), var(--color-orange-active));
+          transform: translateY(-2px);
+          box-shadow: 0 12px 32px rgba(255, 107, 53, 0.4);
+        }
+
+        .cta-button:active {
+          transform: translateY(0);
+        }
+
+        .pricing-footer {
+          border-top: 1px solid rgba(var(--color-brown-600-rgb), 0.1);
+          padding-top: var(--space-20);
+          margin-top: var(--space-20);
+        }
+
+        .pricing-footer p {
+          font-size: var(--font-size-sm);
+          color: var(--color-text-secondary);
+          margin-bottom: var(--space-8);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: var(--space-8);
+        }
+
+        .pricing-footer .security-icon {
+          width: 16px;
+          height: 16px;
+          color: var(--color-secondary);
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+          .pricing-card {
+            max-width: 340px;
+            padding: 32px 24px;
+          }
+
+          .pricing-title {
+            font-size: var(--font-size-2xl);
+          }
+
+          .pricing-subtitle {
+            font-size: var(--font-size-base);
+          }
+
+          .price-amount {
+            font-size: 2.8rem;
+          }
+
+          .pricing-features li {
+            font-size: var(--font-size-base);
+          }
         }
 
         @font-face {
           font-family: 'FKGroteskNeue';
           src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
             format('woff2');
+        }
+
+        @keyframes spin {
+          to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -1281,49 +1961,86 @@
             <div class="container">
                 <h1>Seu lanche chegou e você nem precisou atender o interfone 🍔📲</h1>
                 <p>O app que conecta entregadores e moradores com mensagens automáticas via WhatsApp.</p>
-                <div>
-                    <button class="btn btn--primary btn--lg" onclick="showConsentModal()">
-                        🟢 Quero Participar
-                    </button>
-                    <button class="btn btn--dark btn--lg" onclick="showPage('motoboy')">
-                        ⚫ Sou Motoboy
-                    </button>
-                </div>
+
             </div>
         </section>
 
-        <!-- Como Funciona -->
+        <!-- Audience Sections -->
+        <section class="audience-section" style="padding: 60px 0; background: var(--color-background);">
+            <div class="container">
+                <div class="audience-section">
+                    <!-- Seção para Moradores -->
+                    <div class="morador-card">
+                        <div class="audience-icon">
+                            👤
+                        </div>
+                        <h2>Para Moradores</h2>
+                        <h3>Chegou Aí — o jeito moderno de saber quando sua entrega chegou!</h3>
+                        <p>Cansado de o porteiro esquecer de avisar? Com o Chegou Aí, você recebe uma mensagem automática no WhatsApp assim que o entregador chega ao condomínio.</p>
+                        
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-check"></i> Receba alertas instantâneos</li>
+                            <li><i class="fas fa-check"></i> Evite confusão e atraso</li>
+                            <li><i class="fas fa-check"></i> Sem baixar aplicativo</li>
+                            <li><i class="fas fa-check"></i> Comunicação direta via WhatsApp</li>
+                        </ul>
+                        
+                        <button class="btn btn--primary" onclick="showConsentModal()" style="margin-top: var(--space-20);">Quero Participar</button>
+                    </div>
+                    
+                    <!-- Seção para Motoboys -->
+                    <div class="motoboy-card">
+                        <div class="audience-icon">
+                            🛵
+                        </div>
+                        <h2>Para Motoboys</h2>
+                        <h3>Entregue mais rápido, sem dor de cabeça.</h3>
+                        <p>Chegou Aí é o parceiro ideal para quem faz muitas entregas em condomínios. Esqueça a espera na portaria — nosso sistema avisa o cliente por você.</p>
+                        
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-clock"></i> Economize tempo</li>
+                            <li><i class="fas fa-box"></i> Entregue mais pedidos</li>
+                            <li><i class="fas fa-gift"></i> 100% gratuito</li>
+                            <li><i class="fas fa-comments"></i> Mensagem automática no WhatsApp</li>
+                        </ul>
+                        
+                        <button class="btn btn--secondary" onclick="showPage('motoboy')" style="margin-top: var(--space-20);">Sou Motoboy</button>
+                    </div>
+            </div>
+        </section>
+
+        <!-- Como Funciona - Timeline -->
         <section class="section">
             <div class="container">
-                <h2 class="section-title">Como Funciona</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-qrcode"></i>
+                <h2 class="section-title">Como Funciona - Passo a Passo</h2>
+                <div class="timeline">
+                    <div class="timeline-step step-1">
+                        <div class="step-circle">📱</div>
+                        <div class="step-content">
+                            <div class="step-title">Motoboy escaneia QR Code</div>
+                            <div class="step-description">O entregador chega no condomínio e escaneia o código</div>
                         </div>
-                        <h3>QR Code</h3>
-                        <p>O motoboy escaneia o QR Code na portaria.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-user-edit"></i>
+                    <div class="timeline-step step-2">
+                        <div class="step-circle">📝</div>
+                        <div class="step-content">
+                            <div class="step-title">Digite os dados</div>
+                            <div class="step-description">Informa nome e número do WhatsApp do cliente</div>
                         </div>
-                        <h3>Formulário</h3>
-                        <p>Ele informa o nome e número do cliente.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-robot"></i>
+                    <div class="timeline-step step-3">
+                        <div class="step-circle">🤖</div>
+                        <div class="step-content">
+                            <div class="step-title">Sistema processa</div>
+                            <div class="step-description">Verifica se o cliente é assinante do Chegou Aí</div>
                         </div>
-                        <h3>Robô</h3>
-                        <p>O sistema identifica o cadastro e envia uma mensagem.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fab fa-whatsapp"></i>
+                    <div class="timeline-step step-4">
+                        <div class="step-circle">💬</div>
+                        <div class="step-content">
+                            <div class="step-title">Cliente recebe aviso</div>
+                            <div class="step-description">Mensagem automática é enviada via WhatsApp</div>
                         </div>
-                        <h3>WhatsApp</h3>
-                        <p>O cliente é avisado na hora que o pedido chegou.</p>
                     </div>
                 </div>
                 <p class="text-center" style="margin-top: 2rem; font-size: var(--font-size-lg); color: var(--color-text-secondary);">Simples, rápido e sem depender da portaria.</p>
@@ -1331,14 +2048,55 @@
         </section>
 
         <!-- Plano Mensal -->
-        <section class="section bg-gray-light">
-            <div class="container text-center">
-                <h2 class="section-title">R$ 9,90 por mês — menos do que um lanche!</h2>
-                <div class="price-highlight">R$ 9,90</div>
-                <p style="font-size: var(--font-size-lg); max-width: 600px; margin: 0 auto;">Tenha praticidade e agilidade nas suas entregas por um valor simbólico. Cadastre-se em segundos e comece a receber notificações automáticas.</p>
-                <button class="btn btn--primary btn--lg" onclick="showPage('moradores')" style="margin-top: var(--space-24);">
-                    Ver planos para moradores
-                </button>
+        <section class="pricing-section">
+            <div class="container">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h2 class="pricing-title">Plano Chegou Aí</h2>
+                        <p class="pricing-subtitle">Notificações automáticas para suas entregas</p>
+                    </div>
+
+                    <div class="pricing-features">
+                        <ul>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                Notificações ilimitadas
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                Suporte via WhatsApp
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                Sem anúncios
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                Cancele quando quiser
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="price-display">
+                        <div class="price-amount">R$ 9,90</div>
+                        <div class="price-period">/mês</div>
+                    </div>
+
+                    <button class="cta-button" onclick="showConsentModal()">
+                        Assinar Agora
+                    </button>
+
+                    <div class="pricing-footer">
+                        <p>
+                            <i class="fas fa-shield-alt security-icon"></i>
+                            Pagamento seguro via CAKTO PAY
+                        </p>
+                        <p>
+                            <i class="fas fa-times-circle security-icon"></i>
+                            Cancele a qualquer momento
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1538,68 +2296,132 @@
 
 
 
-    <!-- Registro Page -->
-    <div id="registro" class="page">
-        <div class="registro-container">
+    <!-- Nova Página de Cadastro do Cliente -->
+    <div id="cadastro-cliente" class="page">
+        <div class="container" style="max-width: 600px; padding: 40px 20px;">
             <div class="card">
                 <div class="card__body">
-                    <div class="text-center" style="margin-bottom: 2rem;">
-                        <div class="logo" style="justify-content: center;">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMjAwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjRkY2QjM1Ii8+Cjx0ZXh0IHg9IjEwIiB5PSIzMiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiPkNoZWdvdSBBw608L3RleHQ+Cjwvc3ZnPgo=" alt="Chegou Aí">
+                    <!-- Header Simplificado -->
+                    <div class="restricted-page-header text-center" style="margin-bottom: 2rem;">
+                        <div class="logo" style="justify-content: center; margin-bottom: var(--space-16);">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMjAwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjRkY2QjM1Ii8+Cjx0ZXh0IHg9IjEwIiB5PSIzMiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiPkNoZWdvdSBBw608L3RleHQ+Cjwvc3ZnPgo=" alt="Chegou Aí" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <span style="display: none; font-size: 18px; font-weight: bold; color: #FF6B35;">Chegou Aí</span>
                         </div>
-                        <h2>Bem-vindo ao Chegou Aí! 🎉</h2>
-                        <p>Pagamento confirmado! Agora vamos finalizar seu cadastro.</p>
+                        <h1>🎉 Bem-vindo ao Chegou Aí!</h1>
+                        <p style="font-size: var(--font-size-lg); color: var(--color-text-secondary); margin-bottom: var(--space-24);">Seu pagamento foi realizado com sucesso! Agora complete seu cadastro:</p>
                     </div>
 
-                    <div id="registroMessage" class="message hidden"></div>
+                    <div id="cadastroClienteMessage" class="message hidden"></div>
 
-                    <div id="welcomeSection">
-                        <div style="background: var(--color-bg-3); padding: var(--space-20); border-radius: var(--radius-base); margin-bottom: var(--space-20);">
-                            <h3>Como funciona o cadastro:</h3>
-                            <ol style="margin: var(--space-16) 0;">
-                                <li>Preencha seu nome e telefone</li>
-                                <li>Clique em "Cadastrar Agora"</li>
-                                <li>Receba nossa mensagem de confirmação no WhatsApp</li>
-                                <li>Confirme o recebimento e pronto!</li>
-                            </ol>
+                    <!-- Como funciona seu cadastro -->
+                    <div id="cadastroSection">
+                        <div style="background: var(--color-bg-3); padding: var(--space-20); border-radius: var(--radius-base); margin-bottom: var(--space-24);">
+                            <h3 style="color: var(--color-primary); margin-bottom: var(--space-16);">Como funciona seu cadastro</h3>
+                            <div class="timeline-steps" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: var(--space-16); text-align: center;">
+                                <div class="step">
+                                    <div style="background: var(--color-primary); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-8); font-weight: bold;">1</div>
+                                    <p style="font-size: var(--font-size-sm); font-weight: var(--font-weight-medium);">Complete suas informações abaixo</p>
+                                </div>
+                                <div class="step">
+                                    <div style="background: var(--color-primary); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-8); font-weight: bold;">2</div>
+                                    <p style="font-size: var(--font-size-sm); font-weight: var(--font-weight-medium);">Clique em "Finalizar Cadastro"</p>
+                                </div>
+                                <div class="step">
+                                    <div style="background: var(--color-primary); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-8); font-weight: bold;">3</div>
+                                    <p style="font-size: var(--font-size-sm); font-weight: var(--font-weight-medium);">Receba confirmação no WhatsApp</p>
+                                </div>
+                                <div class="step">
+                                    <div style="background: var(--color-secondary); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-8); font-weight: bold;">4</div>
+                                    <p style="font-size: var(--font-size-sm); font-weight: var(--font-weight-medium);">Pronto! Você já pode receber notificações</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <form id="registroForm">
+                        <!-- Formulário de cadastro -->
+                        <form id="cadastroClienteForm">
                             <div class="form-group">
-                                <label class="form-label" for="registroNome">Seu Nome Completo</label>
-                                <input type="text" class="form-control" id="registroNome" placeholder="Digite seu nome completo" required>
+                                <label class="form-label" for="cadastroNomeCompleto">Nome Completo *</label>
+                                <input type="text" class="form-control" id="cadastroNomeCompleto" placeholder="Digite seu nome completo" required>
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label" for="registroTelefone">Seu Telefone</label>
-                                <input type="tel" class="form-control" id="registroTelefone" placeholder="(DD)9 98319895" required>
+                                <label class="form-label" for="cadastroTelefone">Telefone *</label>
+                                <input type="tel" class="form-control" id="cadastroTelefone" placeholder="(42)99999-9999" required>
                             </div>
 
-                            <button type="submit" class="btn btn--primary" style="width: 100%; margin-bottom: var(--space-16);">
-                                Cadastrar Agora
+                            <button type="submit" class="btn btn--primary" style="width: 100%; margin-bottom: var(--space-16); background: var(--color-primary);">
+                                Finalizar Cadastro
                             </button>
                         </form>
                     </div>
 
-                    <div id="confirmationSection" class="hidden">
+                    <!-- Confirmação -->
+                    <div id="confirmacaoSection" class="hidden">
                         <div class="message message--success">
-                            <h3>🎉 Seu cadastro foi feito com sucesso!</h3>
-                            <p>Nosso sistema enviará uma mensagem de confirmação para o número <strong id="confirmedPhone"></strong></p>
+                            <h3>✅ Cadastro realizado com sucesso!</h3>
+                            <p>Enviamos uma mensagem de confirmação para seu WhatsApp</p>
                         </div>
 
-                        <div class="text-center">
-                            <p style="margin-bottom: var(--space-20);">Você recebeu a mensagem no WhatsApp?</p>
-                            <button id="receivedBtn" class="btn btn--secondary" style="width: 100%; margin-bottom: var(--space-12);">
-                                ✅ Recebi a mensagem
-                            </button>
-                            <button id="notReceivedBtn" class="btn btn--outline" style="width: 100%;">
-                                ❌ Não recebi a mensagem
-                            </button>
+                        <div class="text-center" style="margin-top: var(--space-24);">
+                            <p style="margin-bottom: var(--space-20); font-size: var(--font-size-lg);">Você recebeu a mensagem no WhatsApp?</p>
+                            <div style="display: flex; gap: var(--space-12); flex-wrap: wrap; justify-content: center;">
+                                <button id="recebiMensagemBtn" class="btn btn--secondary" style="min-width: 200px;">
+                                    ✅ Recebi a mensagem
+                                </button>
+                                <button id="naoRecebiMensagemBtn" class="btn" style="background: #6B7280; color: white; min-width: 200px;">
+                                    ❌ Não recebi a mensagem
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <button class="btn btn--outline" onclick="showPage('home')" style="width: 100%; margin-top: var(--space-16);">
-                        Voltar ao Início
+                    <!-- Dica para número incorreto -->
+                    <div id="dicaNumeroSection" class="hidden">
+                        <div class="message message--warning">
+                            <h3>⚠️ Dica importante!</h3>
+                            <p>Verifique se o número de telefone está correto. Caso necessário, você pode corrigir as informações acima e tentar novamente.</p>
+                        </div>
+                        <div class="text-center" style="margin-top: var(--space-16);">
+                            <button class="btn btn--outline" onclick="voltarAoCadastro()" style="width: 100%;">
+                                Corrigir Informações
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nova Página de Sucesso Final -->
+    <div id="bem-vindo" class="page">
+        <div class="container" style="max-width: 600px; padding: 40px 20px; text-align: center;">
+            <div class="card">
+                <div class="card__body">
+                    <div class="restricted-page-header" style="margin-bottom: 2rem;">
+                        <div class="logo" style="justify-content: center; margin-bottom: var(--space-16);">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMjAwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjRkY2QjM1Ci8+Cjx0ZXh0IHg9IjEwIiB5PSIzMiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiPkNoZWdvdSBBw608L3RleHQ+Cjwvc3ZnPgo=" alt="Chegou Aí" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <span style="display: none; font-size: 18px; font-weight: bold; color: #FF6B35;">Chegou Aí</span>
+                        </div>
+                        <h1 style="font-size: var(--font-size-4xl); margin-bottom: var(--space-16);">🎊 Tudo pronto!</h1>
+                    </div>
+
+                    <div style="background: var(--color-bg-3); padding: var(--space-32); border-radius: var(--radius-lg); margin-bottom: var(--space-32);">
+                        <h2 style="color: var(--color-primary); margin-bottom: var(--space-20);">Seu cadastro no Chegou Aí foi finalizado com sucesso!</h2>
+                        <p style="font-size: var(--font-size-lg); line-height: var(--line-height-normal); color: var(--color-text); margin-bottom: var(--space-24);">A partir de agora você receberá notificações automáticas no WhatsApp quando suas entregas chegarem</p>
+                        
+                        <div style="background: var(--color-surface); padding: var(--space-20); border-radius: var(--radius-base); border-left: 4px solid var(--color-secondary);">
+                            <h4 style="color: var(--color-secondary); margin-bottom: var(--space-12);">📱 Como funciona:</h4>
+                            <ul style="text-align: left; margin: 0; padding-left: var(--space-20);">
+                                <li style="margin-bottom: var(--space-8);">O motoboy escaneia o QR Code na portaria</li>
+                                <li style="margin-bottom: var(--space-8);">Digite seu nome e número</li>
+                                <li style="margin-bottom: var(--space-8);">Você recebe a notificação automaticamente</li>
+                                <li>Desce para pegar sua entrega!</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <button class="btn btn--primary btn--lg" onclick="voltarAoInicio()" style="width: 100%; max-width: 300px;">
+                        🏠 Voltar ao Início
                     </button>
                 </div>
             </div>
@@ -1903,15 +2725,55 @@
         </section>
 
         <!-- Plano Mensal -->
-        <section class="section">
-            <div class="container text-center">
-                <h2 class="section-title">Plano Mensal</h2>
-                <div class="price-highlight">Apenas R$ 9,90 por mês</div>
-                <p style="font-size: var(--font-size-xl); color: var(--color-text-secondary); margin-bottom: 2rem;">menos que um lanche!</p>
-                <p style="font-size: var(--font-size-lg); max-width: 600px; margin: 0 auto var(--space-32) auto;">Tenha praticidade e agilidade nas suas entregas por um valor simbólico</p>
-                <button class="btn btn--primary btn--lg" onclick="showConsentModal()">
-                    Quero me Cadastrar Agora
-                </button>
+        <section class="pricing-section">
+            <div class="container">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h2 class="pricing-title">Plano Chegou Aí</h2>
+                        <p class="pricing-subtitle">Notificações automáticas para suas entregas</p>
+                    </div>
+
+                    <div class="pricing-features">
+                        <ul>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                Notificações ilimitadas
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                Suporte via WhatsApp
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                Sem anúncios
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                Cancele quando quiser
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="price-display">
+                        <div class="price-amount">R$ 9,90</div>
+                        <div class="price-period">/mês</div>
+                    </div>
+
+                    <button class="cta-button" onclick="showConsentModal()">
+                        Assinar Agora
+                    </button>
+
+                    <div class="pricing-footer">
+                        <p>
+                            <i class="fas fa-shield-alt security-icon"></i>
+                            Pagamento seguro via CAKTO PAY
+                        </p>
+                        <p>
+                            <i class="fas fa-times-circle security-icon"></i>
+                            Cancele a qualquer momento
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -2665,9 +3527,9 @@
                 <div class="consent-text">
                     Eu li e concordo com os <a href="/termos" onclick="openTermsFromModal('termos'); return false;" target="_blank" rel="noopener noreferrer" class="modal-link" title="Abrir Termos de Uso em nova aba">Termos de Uso</a> e a <a href="/privacidade" onclick="openTermsFromModal('privacidade'); return false;" target="_blank" rel="noopener noreferrer" class="modal-link" title="Abrir Política de Privacidade em nova aba">Política de Privacidade</a> do Chegou Aí. Declaro que autorizo a Chegou Aí Tecnologia LTDA a coletar e usar meu nome e número de WhatsApp, conforme descrito na Política de Privacidade, para a finalidade exclusiva de me enviar notificações automáticas da chegada de meus pedidos.
                 </div>
-                <div class="consent-checkbox-container">
-                    <input type="checkbox" id="consentCheckbox" class="consent-checkbox">
-                    <label for="consentCheckbox" class="consent-checkbox-label">☐ Eu concordo com os termos acima</label>
+                <div class="consent-checkbox-container" onclick="toggleConsent()" style="cursor: pointer;">
+                    <span id="consentText" class="consent-checkbox-label">☐ Eu concordo com os termos acima</span>
+                    <input type="checkbox" id="consentCheckbox" class="consent-checkbox" style="display: none;">
                 </div>
             </div>
             <div class="consent-modal-footer">
@@ -2675,8 +3537,93 @@
                     Cancelar
                 </button>
                 <button class="consent-btn consent-btn--confirm" id="confirmConsentBtn" onclick="confirmConsent()" disabled>
-                    Concordo - Ir para Pagamento
+                    Ir para Pagamento
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-modal-content">
+            <button class="payment-close-btn" onclick="closePaymentModal()" title="Fechar">
+                ✕
+            </button>
+            
+            <div id="paymentLoading" class="payment-loading">
+                <div class="payment-loading-spinner"></div>
+                <p>Carregando sistema de pagamento...</p>
+            </div>
+            
+            <iframe id="paymentIframe" class="payment-iframe" src="" style="display: none;"></iframe>
+            
+            <div class="payment-simulation">
+                <button class="simulate-btn" onclick="simulatePaymentSuccess()">
+                    🎯 Simular Pagamento Realizado
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Payment Registration Modal -->
+    <div id="postPaymentModal" class="modal-overlay">
+        <div class="post-payment-registration">
+            <div class="post-payment-header">
+                <h2 class="post-payment-title">Bem-vindo ao Chegou Aí! Complete seu cadastro</h2>
+            </div>
+            <div class="post-payment-body">
+                <!-- Success Message -->
+                <div id="paymentSuccessMessage" class="success-message">
+                    <h3>🎉 Pagamento realizado com sucesso!</h3>
+                    <p>Agora vamos finalizar seu cadastro para começar a receber as notificações.</p>
+                </div>
+
+                <!-- Registration Form -->
+                <div id="postPaymentForm">
+                    <form id="finalRegistrationForm">
+                        <div class="form-group">
+                            <label class="form-label" for="finalNome">Nome Completo *</label>
+                            <input type="text" class="form-control" id="finalNome" placeholder="Digite seu nome completo" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="finalTelefone">Seu Telefone *</label>
+                            <input type="tel" class="form-control" id="finalTelefone" placeholder="(42)99999-9999" required>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary" style="width: 100%; margin-bottom: var(--space-16);">
+                            Finalizar Cadastro
+                        </button>
+                    </form>
+                </div>
+
+                <!-- WhatsApp Verification -->
+                <div id="whatsappVerification" class="whatsapp-verification" style="display: none;">
+                    <div class="success-message">
+                        <h3>📲 Cadastro realizado!</h3>
+                        <p>Verificação enviada para WhatsApp: <strong id="verificationPhone"></strong></p>
+                    </div>
+                    
+                    <p>Você recebeu nossa mensagem de confirmação no WhatsApp?</p>
+                    
+                    <div class="verification-buttons">
+                        <button class="verification-btn verification-btn--received" onclick="confirmWhatsAppReceived()">
+                            ✅ Recebi a mensagem
+                        </button>
+                        <button class="verification-btn verification-btn--not-received" onclick="resendWhatsAppVerification()">
+                            ❌ Não recebi a mensagem
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Final Success -->
+                <div id="finalSuccess" class="success-message" style="display: none;">
+                    <h3>🎉 Tudo pronto!</h3>
+                    <p>Seu cadastro foi ativado com sucesso. Agora você receberá notificações automáticas sempre que suas entregas chegarem!</p>
+                    <button class="btn btn--primary" onclick="completeFinalRegistration()" style="margin-top: var(--space-16);">
+                        Finalizar
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -2698,23 +3645,23 @@
         function applyPhoneMask(input) {
             let value = input.value.replace(/\D/g, '');
             
-            if (input.id === 'registroTelefone') {
-                // Format: (DD)9 98319895
+            if (input.id === 'registroTelefone' || input.id === 'finalTelefone') {
+                // Format: (DD)99999-9999
                 if (value.length <= 2) {
                     value = value.replace(/(\d{0,2})/, '($1');
-                } else if (value.length <= 3) {
-                    value = value.replace(/(\d{2})(\d{0,1})/, '($1)$2');
-                } else if (value.length <= 8) {
-                    value = value.replace(/(\d{2})(\d{1})(\d{0,4})/, '($1)$2 $3');
+                } else if (value.length <= 7) {
+                    value = value.replace(/(\d{2})(\d{0,5})/, '($1)$2');
                 } else {
-                    value = value.replace(/(\d{2})(\d{1})(\d{4})(\d{0,4})/, '($1)$2 $3$4');
+                    value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1)$2-$3');
                 }
             } else {
-                // Format: (DD)998319895
+                // Format: (DD)99999-9999
                 if (value.length <= 2) {
                     value = value.replace(/(\d{0,2})/, '($1');
-                } else if (value.length <= 11) {
-                    value = value.replace(/(\d{2})(\d{0,9})/, '($1)$2');
+                } else if (value.length <= 7) {
+                    value = value.replace(/(\d{2})(\d{0,5})/, '($1)$2');
+                } else {
+                    value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1)$2-$3');
                 }
             }
             
@@ -2723,7 +3670,7 @@
 
         // Add event listeners for phone masks
         document.addEventListener('DOMContentLoaded', function() {
-            const phoneInputs = ['clientPhone', 'registroTelefone'];
+            const phoneInputs = ['clientPhone', 'registroTelefone', 'finalTelefone', 'cadastroTelefone'];
             phoneInputs.forEach(id => {
                 const input = document.getElementById(id);
                 if (input) {
@@ -2736,6 +3683,28 @@
 
         // Page navigation
         function showPage(pageId) {
+            try {
+                console.log('Navegando para página:', pageId);
+                
+                // Controle de acesso para páginas restritas
+                if (pageId === 'cadastro-cliente') {
+                    console.log('Verificando permissão para cadastro-cliente. PaymentCompleted:', window.paymentCompleted);
+                    if (!window.paymentCompleted) {
+                        console.log('Acesso negado: pagamento não realizado');
+                        alert('Você precisa completar o pagamento primeiro.');
+                        showPage('home');
+                        return;
+                    }
+                }
+            
+            if (pageId === 'bem-vindo') {
+                if (!window.cadastroCompleted) {
+                    console.log('Acesso negado: cadastro não finalizado');
+                    showPage('home');
+                    return;
+                }
+            }
+            
             // Hide all pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
@@ -2773,6 +3742,12 @@
                 case 'admin':
                     pageTitle = 'Área Administrativa - Chegou Aí';
                     break;
+                case 'cadastro-cliente':
+                    pageTitle = 'Cadastro do Cliente - Chegou Aí';
+                    break;
+                case 'bem-vindo':
+                    pageTitle = 'Bem-vindo - Chegou Aí';
+                    break;
                 case 'registro':
                     pageTitle = 'Cadastro - Chegou Aí';
                     break;
@@ -2784,8 +3759,19 @@
                 logout();
             }
 
-            // Scroll to top when changing pages
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+                // Scroll to top when changing pages
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                console.log('Página alterada com sucesso para:', pageId);
+                
+            } catch (error) {
+                console.error('Erro ao navegar para página:', pageId, error);
+                alert('Erro ao carregar página. Voltando ao início.');
+                // Fallback para página inicial em caso de erro
+                const pages = document.querySelectorAll('.page');
+                pages.forEach(page => page.classList.remove('active'));
+                document.getElementById('home').classList.add('active');
+            }
         }
 
         // Motoboy form handler
@@ -2849,14 +3835,171 @@
         function confirmConsent() {
             const checkbox = document.getElementById('consentCheckbox');
             if (checkbox.checked) {
-                // Close modal
+                // Close consent modal
                 closeConsentModal();
                 
-                // Redirect to payment
+                // Open payment modal instead of new tab
                 setTimeout(() => {
-                    window.open('https://pay.cakto.com.br/3eikrw7_608496', '_blank', 'noopener noreferrer');
+                    openPaymentModal();
                 }, 300);
             }
+        }
+
+        // Toggle consent without checkbox
+        function toggleConsent() {
+            const checkbox = document.getElementById('consentCheckbox');
+            const consentText = document.getElementById('consentText');
+            const confirmBtn = document.getElementById('confirmConsentBtn');
+            
+            checkbox.checked = !checkbox.checked;
+            consentText.textContent = checkbox.checked ? '☑ Eu concordo com os termos acima' : '☐ Eu concordo com os termos acima';
+            confirmBtn.disabled = !checkbox.checked;
+        }
+
+        // Payment Modal Functions
+        function openPaymentModal() {
+            try {
+                console.log('Abrindo modal de pagamento');
+                const modal = document.getElementById('paymentModal');
+                const iframe = document.getElementById('paymentIframe');
+                const loading = document.getElementById('paymentLoading');
+                
+                // Show modal
+                modal.classList.add('active');
+                
+                // Prevent body scroll
+                document.body.style.overflow = 'hidden';
+                
+                // Show loading
+                loading.style.display = 'block';
+                iframe.style.display = 'none';
+                
+                // Load iframe after delay
+                setTimeout(() => {
+                    try {
+                        iframe.src = 'https://pay.cakto.com.br/3eikrw7_608496';
+                        
+                        // Hide loading after iframe loads
+                        setTimeout(() => {
+                            loading.style.display = 'none';
+                            iframe.style.display = 'block';
+                        }, 2000);
+                    } catch (iframeError) {
+                        console.error('Erro ao carregar iframe de pagamento:', iframeError);
+                        loading.innerHTML = '<p>Erro ao carregar sistema de pagamento. Use o botão de simular abaixo.</p>';
+                    }
+                }, 1000);
+                
+                // Auto-simulate payment after 15 seconds for demo
+                setTimeout(() => {
+                    if (modal.classList.contains('active')) {
+                        console.log('Auto-simulando pagamento após 15 segundos');
+                        simulatePaymentSuccess();
+                    }
+                }, 15000);
+                
+            } catch (error) {
+                console.error('Erro ao abrir modal de pagamento:', error);
+                alert('Erro ao abrir sistema de pagamento. Tente novamente.');
+            }
+        }
+
+        function closePaymentModal() {
+            try {
+                console.log('Fechando modal de pagamento');
+                const modal = document.getElementById('paymentModal');
+                const iframe = document.getElementById('paymentIframe');
+                
+                modal.classList.remove('active');
+                iframe.src = ''; // Stop loading
+                
+                // Restore body scroll
+                document.body.style.overflow = '';
+                
+            } catch (error) {
+                console.error('Erro ao fechar modal de pagamento:', error);
+                // Force restore scroll even if there's an error
+                document.body.style.overflow = '';
+            }
+        }
+
+        function simulatePaymentSuccess() {
+            try {
+                console.log('Pagamento simulado - iniciando redirecionamento');
+                
+                // Close payment modal
+                closePaymentModal();
+                
+                // Set session flag for payment completed
+                window.paymentCompleted = true;
+                console.log('Flag de pagamento definida:', window.paymentCompleted);
+                
+                // Show loading message briefly
+                showMessage('motoboyMessage', '<div class="loading-spinner"></div>Processando pagamento...', 'loading');
+                
+                // Redirect to cadastro-cliente page using SPA navigation only
+                setTimeout(() => {
+                    try {
+                        console.log('Redirecionando para cadastro-cliente...');
+                        showPage('cadastro-cliente');
+                        console.log('Redirecionamento realizado com sucesso');
+                    } catch (redirectError) {
+                        console.error('Erro no redirecionamento:', redirectError);
+                        alert('Erro ao processar pagamento. Tente novamente.');
+                        showPage('home');
+                    }
+                }, 1000);
+                
+            } catch (error) {
+                console.error('Erro no simulatePaymentSuccess:', error);
+                alert('Erro ao processar pagamento. Tente novamente.');
+                closePaymentModal();
+            }
+        }
+
+        // Post Payment Registration Functions
+        function openPostPaymentModal() {
+            const modal = document.getElementById('postPaymentModal');
+            const registration = document.querySelector('.post-payment-registration');
+            
+            // Show modal
+            modal.classList.add('active');
+            registration.classList.add('active');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePostPaymentModal() {
+            const modal = document.getElementById('postPaymentModal');
+            const registration = document.querySelector('.post-payment-registration');
+            
+            modal.classList.remove('active');
+            registration.classList.remove('active');
+            
+            // Restore body scroll
+            document.body.style.overflow = '';
+        }
+
+        function confirmWhatsAppReceived() {
+            // Show final success
+            document.getElementById('whatsappVerification').style.display = 'none';
+            document.getElementById('finalSuccess').style.display = 'block';
+        }
+
+        function resendWhatsAppVerification() {
+            alert('📲 Nova mensagem de verificação enviada para seu WhatsApp!');
+        }
+
+        function completeFinalRegistration() {
+            // Close post payment modal
+            closePostPaymentModal();
+            
+            // Show success message on main page
+            setTimeout(() => {
+                showPage('home');
+                alert('🎉 Cadastro finalizado com sucesso! Bem-vindo ao Chegou Aí!');
+            }, 500);
         }
 
         function openTermsInNewTab(page) {
@@ -2886,7 +4029,7 @@
             showConsentModal();
         }
 
-        // Registration form handler
+        // Registration form handler (existing)
         document.getElementById('registroForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -2906,6 +4049,36 @@
             document.getElementById('welcomeSection').classList.add('hidden');
             document.getElementById('confirmationSection').classList.remove('hidden');
             document.getElementById('confirmedPhone').textContent = telefone;
+        });
+
+        // Final registration form handler (new)
+        document.addEventListener('DOMContentLoaded', function() {
+            const finalRegistrationForm = document.getElementById('finalRegistrationForm');
+            if (finalRegistrationForm) {
+                finalRegistrationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const nome = document.getElementById('finalNome').value.trim();
+                    const telefone = document.getElementById('finalTelefone').value.trim();
+                    
+                    if (!nome || !telefone) {
+                        alert('Por favor, preencha todos os campos.');
+                        return;
+                    }
+                    
+                    // Add to registered users
+                    registeredUsers.push({ nome, telefone, ativo: true });
+                    clients.push({ nome, telefone, ativo: true });
+                    
+                    // Hide form and show WhatsApp verification
+                    document.getElementById('postPaymentForm').style.display = 'none';
+                    document.getElementById('whatsappVerification').style.display = 'block';
+                    document.getElementById('verificationPhone').textContent = telefone;
+                });
+            }
+            
+            // Add phone mask to final registration field (handled by phoneInputs array above)
+            // This ensures consistent phone formatting across all fields
         });
 
         // Confirmation buttons
@@ -3031,10 +4204,179 @@
             mobileMenuOverlay.classList.remove('active');
         }
 
+        // Novas funções para o fluxo de cadastro
+        function voltarAoCadastro() {
+            try {
+                console.log('Voltando ao formulário de cadastro');
+                document.getElementById('dicaNumeroSection').classList.add('hidden');
+                document.getElementById('confirmacaoSection').classList.add('hidden');
+                document.getElementById('cadastroSection').classList.remove('hidden');
+            } catch (error) {
+                console.error('Erro ao voltar ao cadastro:', error);
+                alert('Erro ao voltar ao formulário. Recarregue a página.');
+            }
+        }
+        
+        function voltarAoInicio() {
+            try {
+                console.log('Voltando ao início e limpando flags');
+                // Limpar flags de acesso
+                window.paymentCompleted = false;
+                window.cadastroCompleted = false;
+                console.log('Flags limpas:', { paymentCompleted: window.paymentCompleted, cadastroCompleted: window.cadastroCompleted });
+                showPage('home');
+            } catch (error) {
+                console.error('Erro ao voltar ao início:', error);
+                // Force redirect to home even if there's an error
+                try {
+                    const pages = document.querySelectorAll('.page');
+                    pages.forEach(page => page.classList.remove('active'));
+                    document.getElementById('home').classList.add('active');
+                } catch (fallbackError) {
+                    console.error('Erro no fallback:', fallbackError);
+                    window.location.reload();
+                }
+            }
+        }
+        
+        // Handler do formulário de cadastro do cliente
+        function setupCadastroClienteForm() {
+            const form = document.getElementById('cadastroClienteForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const nome = document.getElementById('cadastroNomeCompleto').value.trim();
+                    const telefone = document.getElementById('cadastroTelefone').value.trim();
+                    
+                    if (!nome || !telefone) {
+                        showMessage('cadastroClienteMessage', 'Por favor, preencha todos os campos obrigatórios.', 'error');
+                        return;
+                    }
+                    
+                    // Simula cadastro
+                    showMessage('cadastroClienteMessage', 'Processando cadastro...', 'loading');
+                    
+                    setTimeout(() => {
+                        // Adicionar aos clientes cadastrados
+                        clients.push({ nome, telefone, ativo: true });
+                        registeredUsers.push({ nome, telefone, ativo: true });
+                        
+                        // Mostrar seção de confirmação
+                        document.getElementById('cadastroSection').classList.add('hidden');
+                        document.getElementById('confirmacaoSection').classList.remove('hidden');
+                        
+                        // Limpar mensagem
+                        document.getElementById('cadastroClienteMessage').classList.add('hidden');
+                    }, 1500);
+                });
+            }
+            
+            // Botão "Recebi a mensagem"
+            const recebiBtn = document.getElementById('recebiMensagemBtn');
+            if (recebiBtn) {
+                recebiBtn.addEventListener('click', function() {
+                    try {
+                        console.log('Usuário confirmou recebimento da mensagem');
+                        window.cadastroCompleted = true;
+                        console.log('Cadastro marcado como completo:', window.cadastroCompleted);
+                        showPage('bem-vindo');
+                    } catch (error) {
+                        console.error('Erro ao confirmar mensagem:', error);
+                        alert('Erro ao finalizar cadastro. Tente novamente.');
+                    }
+                });
+            }
+            
+            // Botão "Não recebi a mensagem"
+            const naoRecebiBtn = document.getElementById('naoRecebiMensagemBtn');
+            if (naoRecebiBtn) {
+                naoRecebiBtn.addEventListener('click', function() {
+                    try {
+                        console.log('Usuário não recebeu a mensagem');
+                        document.getElementById('confirmacaoSection').classList.add('hidden');
+                        document.getElementById('dicaNumeroSection').classList.remove('hidden');
+                    } catch (error) {
+                        console.error('Erro ao mostrar dica de número:', error);
+                        alert('Erro ao processar. Tente novamente.');
+                    }
+                });
+            }
+        }
+
+        // System verification function
+        function verifySystemIntegrity() {
+            try {
+                console.log('Verificando integridade do sistema...');
+                
+                // Verify essential elements exist
+                const essentialElements = [
+                    'home', 'cadastro-cliente', 'bem-vindo',
+                    'paymentModal', 'consentModal', 'motoboyForm'
+                ];
+                
+                const missingElements = essentialElements.filter(id => !document.getElementById(id));
+                if (missingElements.length > 0) {
+                    console.error('Elementos essenciais não encontrados:', missingElements);
+                    return false;
+                }
+                
+                // Verify essential functions exist
+                const essentialFunctions = [
+                    'showPage', 'simulatePaymentSuccess', 
+                    'openPaymentModal', 'closePaymentModal'
+                ];
+                
+                const missingFunctions = essentialFunctions.filter(funcName => typeof window[funcName] !== 'function');
+                if (missingFunctions.length > 0) {
+                    console.error('Funções essenciais não encontradas:', missingFunctions);
+                    return false;
+                }
+                
+                console.log('Sistema verificado com sucesso!');
+                return true;
+                
+            } catch (error) {
+                console.error('Erro na verificação do sistema:', error);
+                return false;
+            }
+        }
+        
         // Initialize app
         document.addEventListener('DOMContentLoaded', function() {
-            // Show home page by default
-            showPage('home');
+            try {
+                console.log('Inicializando aplicação...');
+                
+                // Verify system integrity first
+                if (!verifySystemIntegrity()) {
+                    alert('Erro crítico: Sistema não pôde ser inicializado corretamente.');
+                    return;
+                }
+                
+                // Initialize global flags
+                window.paymentCompleted = false;
+                window.cadastroCompleted = false;
+                console.log('Flags globais inicializadas:', { paymentCompleted: window.paymentCompleted, cadastroCompleted: window.cadastroCompleted });
+            
+            // Setup new forms
+            setupCadastroClienteForm();
+            
+                // Show home page by default
+                showPage('home');
+                
+                console.log('Aplicação inicializada com sucesso!');
+                
+            } catch (initError) {
+                console.error('Erro crítico na inicialização:', initError);
+                alert('Erro ao inicializar aplicação. Recarregue a página.');
+                
+                // Emergency fallback
+                try {
+                    document.getElementById('home').classList.add('active');
+                } catch (fallbackError) {
+                    console.error('Erro no fallback de emergência:', fallbackError);
+                }
+            }
             
             // Setup mobile menu event listeners
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -3117,20 +4459,39 @@
                 }
             };
             
-            // Checkbox state change
+            // Checkbox state change (updated for new toggle function)
             if (consentCheckbox && confirmConsentBtn) {
-                consentCheckbox.addEventListener('change', function() {
-                    confirmConsentBtn.disabled = !this.checked;
-                    
-                    // Update visual checkbox label
-                    const label = document.querySelector('.consent-checkbox-label');
-                    if (label) {
-                        label.textContent = this.checked ? '☑ Eu concordo com os termos acima' : '☐ Eu concordo com os termos acima';
-                    }
-                });
+                // Initial state
+                confirmConsentBtn.disabled = !consentCheckbox.checked;
             }
             
-            // Close modal with ESC key
+            // Close payment modal with ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (document.getElementById('paymentModal').classList.contains('active')) {
+                        closePaymentModal();
+                    }
+                    if (document.getElementById('postPaymentModal').classList.contains('active')) {
+                        closePostPaymentModal();
+                    }
+                }
+            });
+            
+            // Close payment modal by clicking overlay
+            document.getElementById('paymentModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePaymentModal();
+                }
+            });
+            
+            // Close post payment modal by clicking overlay
+            document.getElementById('postPaymentModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePostPaymentModal();
+                }
+            });
+            
+            // Close consent modal with ESC key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && consentModalOverlay.classList.contains('active')) {
                     closeConsentModal();
